@@ -5,7 +5,6 @@
 */
 
 #include <iostream>
-#include <fstream>
 #include <iomanip>
 using namespace std;
 
@@ -25,33 +24,66 @@ int main()
 	cout.setf(ios::showpoint);
 	cout.precision(2);	
 
+	// Welcome customer to SmartCart and enter while loop
 	cout << "\nWelcome to SmartCart!" << endl;
-	while (!checkoutStatus)
-	{
+	while (!checkoutStatus) {
+		// Input/ask for item name
 		cout << "What was the last item you put into your cart?" << endl;
 		cin.get(newItem, MAX_CHAR, '\n');
+		while (!cin) {
+			cin.clear();
+			cin.ignore(MAX_CHAR, '\n');
+			cout << "You entered an illegal value. Please try again: ";
+			cin.get(newItem, MAX_CHAR, '\n');
+		}
 		cin.ignore(MAX_CHAR, '\n');
 
+		// Input/ask for quantity of item
 		cout << "How many " << newItem << "(s) did you put into your cart?" << endl;
 		cin >> quantity;
+		while (!cin) {
+			cin.clear();
+			cin.ignore(MAX_CHAR, '\n');
+			cout << "You entered an illegal value. Please try again: ";
+			cin >> quantity;
+		}
 		counter = counter + quantity;
 		cin.ignore(MAX_CHAR, '\n');
 
+		// Input/ask for unit-cost of each item
 		cout << "How much do(es) each " << newItem << " cost?" << endl;
 		cin >> newItemPrice;
+		while (!cin) {
+			cin.clear();
+			cin.ignore(MAX_CHAR, '\n');
+			cout << "You entered an illegal value. Please try again: ";
+			cin >> newItemPrice;
+		}
 		cin.ignore(MAX_CHAR, '\n');
 
+		// calculate new SmartCart subtotal
 		cartSubtotal = cartSubtotal + (quantity * newItemPrice);
 		cout << "New SmartCart Subtotal: $" << cartSubtotal << endl;
+		
+		// Check to see if customer is ready for checkout / exit loop
 		cout << "You currently have " << counter << " items in your cart. \nAre you ready to checkout? (y/n)" << endl;
 		cin >> prompt;
+		while (!cin) {
+			cin.clear();
+			cin.ignore(MAX_CHAR, '\n');
+			cout << "You entered an illegal value. Please try again: ";
+			cin >> prompt;
+		}
 		cin.ignore(MAX_CHAR, '\n');
 
 		if (prompt == 'y' || prompt == 'Y')
 			checkoutStatus = true;
 	}
-	cout << "*********************************************************************" << endl;
+	
+	// Provide checkout information in appropriate formatting
+	cout << "***************************************************************" << endl;
 	cout << "\nYour Grand Total is: $" << cartSubtotal << " and you have " << counter << " items in your cart.\n" << endl;
-	cout <<  "We have neither paper nor plastic bags, good luck!" << endl;
+	cout <<  "We provide neither paper nor plastic bags, \ngood luck carrying your groceries!!" << endl;
+	cout << "***************************************************************" << endl;
 	return 0;
 }
