@@ -84,6 +84,6 @@ int main()
 	cout << "***************************************************************" << endl;
 	cout << "\nYour Grand Total is: $" << cartSubtotal << " and you have " << counter << " items in your cart.\n" << endl;
 	cout <<  "We provide neither paper nor plastic bags, \ngood luck carrying your groceries!!" << endl;
-	cout << "***************************************************************" << endl;
+	cout << "\n***************************************************************" << endl;
 	return 0;
 }
