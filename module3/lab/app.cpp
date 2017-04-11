@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 using namespace std;
 
 const int MAX_CHAR = 100;
@@ -7,7 +8,7 @@ const int MIN_B = 80;
 const int MIN_C = 70;
 
 double getAvg();
-char determineGrade(double);
+char determinGrade(double);
 void printMsg(char grade);
 
 int main()
@@ -49,7 +50,7 @@ char determinGrade(double finalAvg)
 	{
 		grade = 'B';
 	}
-	else if(finalAvg >= MIN_C);
+	else if(finalAvg >= MIN_C)
 	{
 		grade = 'C';
 	}

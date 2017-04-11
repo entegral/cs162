@@ -1,0 +1,6 @@
+
+
+1) function prototype typo 'char determineGrade(double)' changed to 'char determinGrade(double)'
+2) determinGrade(double finalAvg) contains an error in the last 'else if' statement because the line ends in an ';'
+3) added cstring header file 
+
