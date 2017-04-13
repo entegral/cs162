@@ -28,7 +28,7 @@ void printMenu();
 void displayLibrary();
 void addToLibrary();
 void removeFromLibrary();
-void searchByIndex();
+void searchForsong();
 bool quitProgram();
 
 int main()
@@ -54,7 +54,7 @@ int main()
 				removeFromLibrary();		// remove song by index
 				break;
 			case 's':
-				searchByIndex();		// MAKE THIS FUNCTION
+				searchForSong();		// Search for song by artist or album
 				break;
 			case 'q':
 				loopControl = quitProgram();					
@@ -62,9 +62,6 @@ int main()
 		}
 
 	}
-
-
-// c) remove song by index
 
 
 // d) search for song by:
@@ -103,7 +100,7 @@ void removeFromLibrary()
 	cout << "[PLACEHOLDER] removed something from library" << endl;
 }
 
-void searchByIndex()
+void searchForSong()
 {
 	cout << "[PLACEHOLDER] searched library!" << endl;
 }
