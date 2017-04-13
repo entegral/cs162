@@ -44,14 +44,14 @@ int main()
 		cin >> menuSelection;
 		cin.ignore(MAXCHAR, '\n');
 		switch (menuSelection) {
-			case 'd':
+			case 'd':				// display info for all songs with indexes
 				displayLibrary();		// MAKE THIS FUNCTION
 				break;
 			case 'a':
 				addToLibrary();			// MAKE THIS FUNCTION
 				break;
 			case 'r':
-				removeFromLibrary();		// MAKE THIS FUNCTION
+				removeFromLibrary();		// remove song by index
 				break;
 			case 's':
 				searchByIndex();		// MAKE THIS FUNCTION
@@ -62,8 +62,6 @@ int main()
 		}
 
 	}
-// b) display information for all songs with index for each songs
-//		-use array of "Songs" strut to model each song
 
 
 // c) remove song by index
