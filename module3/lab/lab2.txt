@@ -4,3 +4,10 @@
 2) determinGrade(double finalAvg) contains an error in the last 'else if' statement because the line ends in an ';'
 3) added cstring header file 
 
+all: app
+
+app: app.o
+	g++ app.cpp -o app
+
+clean:
+	rm *o app

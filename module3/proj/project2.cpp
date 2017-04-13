@@ -10,21 +10,58 @@
 #include <iomanip>
 using namespace std;
 
-int MAX_CHAR = 101
+// constants
+const int CAP = 100;
+const int MAXCHAR = 101;
 
-char charIoCheck();
-int intIoCheck();
+struct Video
+{
+	char title[MAXCHAR];
+	char genre[MAXCHAR];
+	int qty;
+	double rating;
+};
+
+
+// function prototypes
+void printMenu();
+void displayLibrary();
+void addToLibrary();
+void removeFromLibrary();
+void searchByIndex();
+bool quitProgram();
+
+int main()
+{
+
+	char menuSelection;
+	bool loopControl = true;
 
 // Menu options:
+	while(loopControl)
+	{
+		printMenu();
+		cin >> menuSelection;
+		cin.ignore(MAXCHAR, '\n');
+		switch (menuSelection) {
+			case 'd':
+				displayLibrary();		// MAKE THIS FUNCTION
+				break;
+			case 'a':
+				addToLibrary();			// MAKE THIS FUNCTION
+				break;
+			case 'r':
+				removeFromLibrary();		// MAKE THIS FUNCTION
+				break;
+			case 's':
+				searchByIndex();		// MAKE THIS FUNCTION
+				break;
+			case 'q':
+				loopControl = quitProgram();					
+				break;
+		}
 
-
-// a) function to create new song and input information:
-// 		- title
-// 		- artist
-// 		- duration
-// 		- album
-
-
+	}
 // b) display information for all songs with index for each songs
 //		-use array of "Songs" strut to model each song
 
@@ -39,22 +76,42 @@ int intIoCheck();
 
 // e) quit
 
-char charIoCheck(input){
-			while (!cin){
-				cin.clear()
-				cin.ignore(MAX_CHAR, '\n')
-				cout << "Your entry was invalid, please try again:" << endl;
-				cin.get(input, MAX_CHAR, '\n')
-			}
-			return input;
+};
+
+void printMenu()
+{
+	cout << "\nMusic Manager:" << endl;
+	cout << "Choose from the foillowing menu options:" << endl;
+	cout << "d) Display Music Library" << endl;
+	cout << "a) Add to Music Library" << endl;
+	cout << "r) Remove from Music Library" << endl;
+	cout << "s) Search Music Library" << endl;
+	cout << "q) Quit\n" << endl;
+	cout << ": ";
 }
 
-int intIoCheck(input){
-			while (!cin){
-				cin.clear()
-				cin.ignore(MAX_CHAR, '\n')
-				cout << "Your entry was invalid, please try again:" << endl;
-				cin.get(input, MAX_CHAR, '\n')
-			}
-			return input;
+void displayLibrary()
+{
+	cout << "[PLACEHOLDER]displaying library!" << endl;
+}
+
+void addToLibrary()
+{
+	cout << "[PLACEHOLDER] added something to library" << endl;
+}
+
+void removeFromLibrary()
+{
+	cout << "[PLACEHOLDER] removed something from library" << endl;
+}
+
+void searchByIndex()
+{
+	cout << "[PLACEHOLDER] searched library!" << endl;
+}
+
+bool quitProgram()
+{
+	cout << "[PLACEHOLDER] you quit!" << endl;
+	return false;
 }
