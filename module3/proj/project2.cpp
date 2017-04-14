@@ -14,12 +14,13 @@ using namespace std;
 const int CAP = 100;
 const int MAXCHAR = 101;
 
-struct Video
+struct Song
 {
 	char title[MAXCHAR];
-	char genre[MAXCHAR];
-	int qty;
-	double rating;
+	char artist[MAXCHAR];
+	char album[MAXCHAR];
+	int durationMin;
+	int durationSec;
 };
 
 
@@ -28,36 +29,46 @@ void printMenu();
 void displayLibrary();
 void addToLibrary();
 void removeFromLibrary();
-void searchForsong();
+void searchForSong();
 bool quitProgram();
+void openFile(char [], ifstream &);
+void loadData(ifstream &, Song[], int &);
 
 int main()
 {
 
 	char menuSelection;
 	bool loopControl = true;
+	char fileName[MAXCHAR] = "songs.txt";
+	ifstream inFile;
+	int size = 0;
+	Song songs[CAP];
 
-// Menu options:
+	// before all else, open file and load data
+	openFile(fileName, inFile);
+	loadData(inFile, songs, size);
+
+	// Menu options:
 	while(loopControl)
 	{
 		printMenu();
 		cin >> menuSelection;
 		cin.ignore(MAXCHAR, '\n');
 		switch (menuSelection) {
-			case 'd':				// display info for all songs with indexes
-				displayLibrary();		// MAKE THIS FUNCTION
+			case 'd':				
+				displayLibrary();		// MAKE THIS FUNCTION: USE COUT TO PRINT SONGS[SIZE] DATA. INCLUDE INDEX OF SONG IN FORMATTING
 				break;
 			case 'a':
-				addToLibrary();			// MAKE THIS FUNCTION
+				addToLibrary();			// MAKE THIS FUNCTION: USE CIN TO RECEIVE INPUT FROM USER AND INPUT INTO NEW STRUCT INDEX OF SONGS[SIZE]
 				break;
 			case 'r':
-				removeFromLibrary();		// remove song by index
+				removeFromLibrary();		// remove song by index: NOT SURE HOW TO DO THIS YET
 				break;
 			case 's':
-				searchForSong();		// Search for song by artist or album
+				searchForSong();		// Search for song by artist or album: NOT YET SURE HOW TO ONLY RETURN DESIRED SONG
 				break;
 			case 'q':
-				loopControl = quitProgram();					
+				loopControl = quitProgram();	// DONE
 				break;
 		}
 
@@ -72,6 +83,36 @@ int main()
 // e) quit
 
 };
+
+void openFile(char fileName[], ifstream &inFile)
+{
+	inFile.open(fileName);
+	if(!inFile)
+	{
+		cout << "File did not open, exiting program" << endl;
+		exit(0);
+	}
+}
+
+void loadData(ifstream &inFile, Song songs[], int &size)
+{
+	inFile.get(songs[size].title, MAXCHAR, ';');
+	while(inFile)
+	{
+		inFile.ignore(100, ';');
+		inFile.get(songs[size].artist, MAXCHAR, ';');
+		inFile.ignore(100, ';');
+		inFile >> songs[size].durationMin;
+		inFile.ignore(100, ';');
+		inFile >> songs[size].durationSec;
+		inFile.ignore(100, ';');
+		inFile.get(songs[size].album, MAXCHAR, ';');
+		inFile.ignore(100, ';');
+		size++;
+		inFile.get(songs[size].title, MAXCHAR, ';');
+	}
+	inFile.close();
+}
 
 void printMenu()
 {
