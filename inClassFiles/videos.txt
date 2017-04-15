@@ -1,0 +1,6 @@
+The Lion King;Family;23;5.0
+The Matrix;Action;34;5.0
+Ace Ventura;Comedy;12;4.5
+Spaceballs;Comedy;34;5.0
+Star Wars;Action;50;5.0
+The Room;Horror;12;5.0
