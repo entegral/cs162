@@ -26,7 +26,7 @@ struct Song
 
 // function prototypes
 void printMenu();
-void displayLibrary();
+void displayLibrary(Song[], int &);
 void addToLibrary();
 void removeFromLibrary();
 void searchForSong();
@@ -56,7 +56,7 @@ int main()
 		cin.ignore(MAXCHAR, '\n');
 		switch (menuSelection) {
 			case 'd':				
-				displayLibrary();		// MAKE THIS FUNCTION: USE COUT TO PRINT SONGS[SIZE] DATA. INCLUDE INDEX OF SONG IN FORMATTING
+				displayLibrary(songs, size);	// MAKE THIS FUNCTION: USE COUT TO PRINT SONGS[SIZE] DATA. INCLUDE INDEX OF SONG IN FORMATTING
 				break;
 			case 'a':
 				addToLibrary();			// MAKE THIS FUNCTION: USE CIN TO RECEIVE INPUT FROM USER AND INPUT INTO NEW STRUCT INDEX OF SONGS[SIZE]
@@ -126,9 +126,20 @@ void printMenu()
 	cout << ": ";
 }
 
-void displayLibrary()
+void displayLibrary(Song songs[], int &size)
 {
+	int counter;
 	cout << "[PLACEHOLDER]displaying library!" << endl;
+	cout << "Current Song Collection:" << endl;
+	for(int i = 0; i <= size; i++)
+	{
+		cout << "\nTitle: " << songs[i].title << endl;
+		cout << "Artist: " << songs[i].title << endl;
+		cout << "Duration: " << songs[i].durationMin << ":" << songs[i].durationSec << endl;
+		cout << "Title: " << songs[i].album << endl;
+		cout << endl;
+		
+	}
 }
 
 void addToLibrary()
