@@ -44,11 +44,11 @@ int main()
 	int size = 0;
 	Song songs[CAP];
 
-	// before all else, open file and load data
+								// before all else, open file and load data
 	openFile(fileName, inFile);
 	loadData(inFile, songs, size);
 
-	// Menu options:
+								// Menu options:
 	while(loopControl)
 	{
 		printMenu();
@@ -136,18 +136,18 @@ void addToLibrary()
 	cout << "[PLACEHOLDER] added something to library" << endl;
 }
 
-void removeFromLibrary()									// Remove song by index
-{												//			- consider string compare to remove by name
+void removeFromLibrary()											// Remove song by index
+{														//			- consider string compare to remove by name
 	cout << "[PLACEHOLDER] removed something from library" << endl;
 }
 
-void searchForSong()										// Search songs:
-{												//		- by artist
-	cout << "[PLACEHOLDER] searched library!" << endl;					//		- by album
+void searchForSong()												// Search songs:
+{														//		- by artist
+	cout << "[PLACEHOLDER] searched library!" << endl;							//		- by album
 }
 
 bool quitProgram()
 {
-	cout << "Fine. You can leave me, go. Really its FINE!  (╯°□°）╯︵ ┻━┻ " << endl;
+	cout << "Fine. You can leave me, go. Really its FINE!  (╯°□°）╯︵ ┻━┻  " << endl;
 	return false;
 }
