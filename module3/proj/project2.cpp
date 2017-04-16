@@ -106,7 +106,7 @@ void loadData(ifstream &inFile, Song songs[], int &size)
 		inFile.ignore(100, ';');
 		inFile >> songs[size].durationSec;
 		inFile.ignore(100, ';');
-		inFile.getline(songs[size].album, MAXCHAR, ';');
+		inFile.getline(songs[size].album, MAXCHAR);
 		size++;
 		inFile.get(songs[size].title, MAXCHAR, ';');
 	}
@@ -127,11 +127,10 @@ void printMenu()
 
 void displayLibrary(Song songs[], int &size)
 {
-	int counter;
 	cout << "*************************" << endl;
 	cout << "*Current Song Collection*" << endl;
 	cout << "*************************" << endl;
-	for(int i = 0; i <= size; i++)
+	for(int i = 0; i < size; i++)
 	{
 		cout << "\nTitle: " << songs[i].title << endl;
 		cout << "Artist: " << songs[i].artist << endl;
