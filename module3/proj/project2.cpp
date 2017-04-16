@@ -129,17 +129,18 @@ void printMenu()
 void displayLibrary(Song songs[], int &size)
 {
 	int counter;
-	cout << "[PLACEHOLDER]displaying library!" << endl;
-	cout << "Current Song Collection:" << endl;
+	cout << "*************************" << endl;
+	cout << "*Current Song Collection*" << endl;
+	cout << "*************************" << endl;
 	for(int i = 0; i <= size; i++)
 	{
 		cout << "\nTitle: " << songs[i].title << endl;
 		cout << "Artist: " << songs[i].title << endl;
 		cout << "Duration: " << songs[i].durationMin << ":" << songs[i].durationSec << endl;
-		cout << "Title: " << songs[i].album << endl;
-		cout << endl;
-		
-	}
+		cout << "Album: " << songs[i].album << endl;
+		cout << endl;	
+	}	
+	cout << "*************************" << endl;
 }
 
 void addToLibrary()
