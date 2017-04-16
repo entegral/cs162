@@ -71,17 +71,7 @@ int main()
 				loopControl = quitProgram();	// DONE
 				break;
 		}
-
 	}
-
-
-// d) search for song by:
-// 		-artist
-// 		-album
-
-
-// e) quit
-
 };
 
 void openFile(char fileName[], ifstream &inFile)
@@ -146,18 +136,18 @@ void addToLibrary()
 	cout << "[PLACEHOLDER] added something to library" << endl;
 }
 
-void removeFromLibrary()
-{
+void removeFromLibrary()									// Remove song by index
+{												//			- consider string compare to remove by name
 	cout << "[PLACEHOLDER] removed something from library" << endl;
 }
 
-void searchForSong()
-{
-	cout << "[PLACEHOLDER] searched library!" << endl;
+void searchForSong()										// Search songs:
+{												//		- by artist
+	cout << "[PLACEHOLDER] searched library!" << endl;					//		- by album
 }
 
 bool quitProgram()
 {
-	cout << "[PLACEHOLDER] you quit!" << endl;
+	cout << "Fine. You can leave me, go. Really its FINE!  (╯°□°）╯︵ ┻━┻ " << endl;
 	return false;
 }
