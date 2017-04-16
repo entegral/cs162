@@ -107,7 +107,7 @@ void loadData(ifstream &inFile, Song songs[], int &size)
 		inFile >> songs[size].durationSec;
 		inFile.ignore(100, ';');
 		inFile.get(songs[size].album, MAXCHAR, ';');
-		inFile.ignore(100, ';');
+		inFile.ignore(100, '\n');
 		size++;
 		inFile.get(songs[size].title, MAXCHAR, ';');
 	}
