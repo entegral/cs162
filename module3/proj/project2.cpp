@@ -29,7 +29,7 @@ void printMenu();
 void displayLibrary(Song[], int &);
 void addToLibrary(Song[], int &);
 void removeFromLibrary();
-void searchForSong();
+void searchByArtist(Song[], int&);
 bool quitProgram();
 void openFile(char [], ifstream &);
 void loadData(ifstream &, Song[], int &);
@@ -43,7 +43,7 @@ int main()
 	ifstream inFile;
 	int size = 0;
 	Song songs[CAP];
-
+	char searchOption;
 								// before all else, open file and load data
 	openFile(fileName, inFile);
 	loadData(inFile, songs, size);
@@ -65,8 +65,16 @@ int main()
 				removeFromLibrary();		// 	remove song by index: NOT SURE HOW TO DO THIS YET
 				break;
 			case 's':
-				searchForSong();		// 	Search for song by artist or album: NOT YET SURE HOW
+				cout << "Would you like to search by (a) Artist, or (b) Album? " << endl;
+				cin >> searchOption;
+				cin.ignore(MAXCHAR, '\n');
+				if (searchOption == 'a') {
+					searchByArtist(songs, size);		// 	Search for song by artist or album
+				} else if (searchOption == 'b') {
+					cout << "album function not ready yet" << endl;
+				} else {
 				break;				//	to only return desired song
+				}
 			case 'q':
 				loopControl = quitProgram();	// DONE
 				break;
@@ -156,9 +164,22 @@ void removeFromLibrary()									// Remove song by index
 	cout << "[PLACEHOLDER] removed something from library" << endl;
 }
 
-void searchForSong()										// Search songs:
+void searchByArtist(Song songs[], int &size)										// Search songs:
 {												//		- by artist first, if not present
-	cout << "[PLACEHOLDER] searched library!" << endl;					//		- by album
+	char searchQuery[MAXCHAR];
+	Song searchResults[CAP];
+	int searchSize = 0;
+	cout << "What artist would you like to search for?" << endl;
+	cin.getline(searchQuery, MAXCHAR, '\n');
+	cin.ignore(MAXCHAR, '\n');
+	for (int i = 0; i < size; i++) 
+	{
+		if (songs[i].artist == searchQuery) 
+		{
+			searchResults[searchSize++] = songs[i];
+		}
+	}
+	displayLibrary(searchResults, searchSize);
 }
 
 bool quitProgram()
