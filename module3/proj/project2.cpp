@@ -123,6 +123,7 @@ void displayLibrary(Song songs[], int &size)
 	for(int i = 0; i < size; i++)
 	{
 		cout << "\nTitle: " << songs[i].title << endl;
+		cout << "Index: :" << i << endl;
 		cout << "Artist: " << songs[i].artist << endl;
 		cout << "Duration: " << songs[i].durationMin << ":" << songs[i].durationSec << endl;
 		cout << "Album: " << songs[i].album << endl;
