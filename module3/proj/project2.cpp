@@ -27,7 +27,7 @@ struct Song
 // function prototypes
 void printMenu();
 void displayLibrary(Song[], int &);
-void addToLibrary();
+void addToLibrary(Song[], int &);
 void removeFromLibrary();
 void searchForSong();
 bool quitProgram();
@@ -56,17 +56,17 @@ int main()
 		cin.ignore(MAXCHAR, '\n');
 		switch (menuSelection) {
 			case 'd':				
-				displayLibrary(songs, size);	// MAKE THIS FUNCTION: USE COUT TO PRINT SONGS[SIZE] DATA. INCLUDE INDEX OF SONG IN FORMATTING
-				break;
+				displayLibrary(songs, size);	// 	MAKE THIS FUNCTION: USE COUT TO PRINT SONGS[SIZE] DATA. INCLUDE
+				break;				// 	INDEX OF SONG FORMATTING
 			case 'a':
-				addToLibrary();			// MAKE THIS FUNCTION: USE CIN TO RECEIVE INPUT FROM USER AND INPUT INTO NEW STRUCT INDEX OF SONGS[SIZE]
-				break;
+				addToLibrary(songs, size);	// 	MAKE THIS FUNCTION: USE CIN TO RECEIVE INPUT FROM USER
+				break;				//	AND INPUT INTO NEW STRUCT INDEX OF SONGS[SIZE]
 			case 'r':
-				removeFromLibrary();		// remove song by index: NOT SURE HOW TO DO THIS YET
+				removeFromLibrary();		// 	remove song by index: NOT SURE HOW TO DO THIS YET
 				break;
 			case 's':
-				searchForSong();		// Search for song by artist or album: NOT YET SURE HOW TO ONLY RETURN DESIRED SONG
-				break;
+				searchForSong();		// 	Search for song by artist or album: NOT YET SURE HOW
+				break;				//	to only return desired song
 			case 'q':
 				loopControl = quitProgram();	// DONE
 				break;
@@ -132,19 +132,33 @@ void displayLibrary(Song songs[], int &size)
 	cout << "*************************" << endl;
 }
 
-void addToLibrary()
-{
-	cout << "[PLACEHOLDER] added something to library" << endl;
+void addToLibrary(Song songs[], int &size)		// parameters needed: 	the array to add to AND the current size of it
+{							// should pass the address of the original array and its size variable too
+	Song newSong;
+	cout << "What is the title of the song you would like to add? " << endl;
+	cin.getline(newSong.title, MAXCHAR, '\n');
+	cout << "Who made this song? " << endl;
+	cin.getline(newSong.artist, MAXCHAR, '\n');
+	cout << "How many minuets is this song? (don't include seconds yet!) " << endl;
+	cin >> newSong.durationMin;
+	cin.ignore(MAXCHAR, '\n');
+	cout << "How many seconds remain? " << endl;
+	cin >> newSong.durationSec;
+	cin.ignore(MAXCHAR, '\n');
+	cout << "What is the name of the album? " << endl;
+	cin.getline(newSong.album, MAXCHAR, '\n');
+	songs[size++] = newSong;
+	cout << newSong.title << " has been added to the library!" << endl;
 }
 
-void removeFromLibrary()											// Remove song by index
-{														//			- consider string compare to remove by name
+void removeFromLibrary()									// Remove song by index
+{												//	- consider string compare to remove by name
 	cout << "[PLACEHOLDER] removed something from library" << endl;
 }
 
-void searchForSong()												// Search songs:
-{														//		- by artist
-	cout << "[PLACEHOLDER] searched library!" << endl;							//		- by album
+void searchForSong()										// Search songs:
+{												//		- by artist first, if not present
+	cout << "[PLACEHOLDER] searched library!" << endl;					//		- by album
 }
 
 bool quitProgram()
