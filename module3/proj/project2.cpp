@@ -65,7 +65,7 @@ int main()
 				removeFromLibrary();				// 	remove song by index: NOT SURE HOW TO DO THIS YET
 				break;
 			case 's':
-				searchForSongs(songs, size);		// 	Search for song by artist or album
+				searchForSongs(songs, size);			// 	Search for song by artist or album
 				break;						//	to only return desired song
 			case 'q':
 				loopControl = quitProgram();			// DONE
