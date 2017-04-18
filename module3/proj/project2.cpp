@@ -16,9 +16,9 @@ const int MAXCHAR = 101;
 
 struct Song
 {
-	char title[MAXCHAR];
-	char artist[MAXCHAR];
-	char album[MAXCHAR];
+	char title[MAXCHAR] = {'\0'};
+	char artist[MAXCHAR] = {'\0'};
+	char album[MAXCHAR] = {'\0'};
 	int durationMin;
 	int durationSec;
 };
@@ -29,7 +29,7 @@ void printMenu();
 void displayLibrary(Song[], int &);
 void addToLibrary(Song[], int &);
 void removeFromLibrary();
-void searchByArtist(Song[], int&);
+void searchForSongs(Song[], int&);
 bool quitProgram();
 void openFile(char [], ifstream &);
 void loadData(ifstream &, Song[], int &);
@@ -43,7 +43,6 @@ int main()
 	ifstream inFile;
 	int size = 0;
 	Song songs[CAP];
-	char searchOption;
 								// before all else, open file and load data
 	openFile(fileName, inFile);
 	loadData(inFile, songs, size);
@@ -54,29 +53,22 @@ int main()
 		printMenu();
 		cin >> menuSelection;
 		cin.ignore(MAXCHAR, '\n');
-		switch (menuSelection) {
+		switch (menuSelection) 
+		{
 			case 'd':				
-				displayLibrary(songs, size);	// 	MAKE THIS FUNCTION: USE COUT TO PRINT SONGS[SIZE] DATA. INCLUDE
-				break;				// 	INDEX OF SONG FORMATTING
+				displayLibrary(songs, size);			// 	MAKE THIS FUNCTION: USE COUT TO PRINT SONGS[SIZE] DATA. INCLUDE
+				break;						// 	INDEX OF SONG FORMATTING
 			case 'a':
-				addToLibrary(songs, size);	// 	MAKE THIS FUNCTION: USE CIN TO RECEIVE INPUT FROM USER
-				break;				//	AND INPUT INTO NEW STRUCT INDEX OF SONGS[SIZE]
+				addToLibrary(songs, size);			// 	MAKE THIS FUNCTION: USE CIN TO RECEIVE INPUT FROM USER
+				break;						//	AND INPUT INTO NEW STRUCT INDEX OF SONGS[SIZE]
 			case 'r':
-				removeFromLibrary();		// 	remove song by index: NOT SURE HOW TO DO THIS YET
+				removeFromLibrary();				// 	remove song by index: NOT SURE HOW TO DO THIS YET
 				break;
 			case 's':
-				cout << "Would you like to search by (a) Artist, or (b) Album? " << endl;
-				cin >> searchOption;
-				cin.ignore(MAXCHAR, '\n');
-				if (searchOption == 'a') {
-					searchByArtist(songs, size);		// 	Search for song by artist or album
-				} else if (searchOption == 'b') {
-					cout << "album function not ready yet" << endl;
-				} else {
-				break;				//	to only return desired song
-				}
+				searchForSongs(songs, size);		// 	Search for song by artist or album
+				break;						//	to only return desired song
 			case 'q':
-				loopControl = quitProgram();	// DONE
+				loopControl = quitProgram();			// DONE
 				break;
 		}
 	}
@@ -125,9 +117,9 @@ void printMenu()
 
 void displayLibrary(Song songs[], int &size)
 {
-	cout << "*************************" << endl;
-	cout << "*Current Song Collection*" << endl;
-	cout << "*************************" << endl;
+	cout << "**************************" << endl;
+	cout << "****Collection Results****" << endl;
+	cout << "**************************" << endl;
 	for(int i = 0; i < size; i++)
 	{
 		cout << "\nTitle: " << songs[i].title << endl;
@@ -164,22 +156,40 @@ void removeFromLibrary()									// Remove song by index
 	cout << "[PLACEHOLDER] removed something from library" << endl;
 }
 
-void searchByArtist(Song songs[], int &size)										// Search songs:
+void searchForSongs(Song songs[], int &size)										// Search songs:
 {												//		- by artist first, if not present
-	char searchQuery[MAXCHAR];
+	char searchOption;
+	char searchQuery[MAXCHAR] = {'\0'};
+	int searchSize = 0;	
 	Song searchResults[CAP];
-	int searchSize = 0;
-	cout << "What artist would you like to search for?" << endl;
-	cin.getline(searchQuery, MAXCHAR, '\n');
+
+	cout << "Would you like to search by (a) Artist, or (b) Album? " << endl;		// 	Search for songs by artist
+	cin >> searchOption;
 	cin.ignore(MAXCHAR, '\n');
-	for (int i = 0; i < size; i++) 
-	{
-		if (songs[i].artist == searchQuery) 
-		{
-			searchResults[searchSize++] = songs[i];
+	if (searchOption == 'a') {
+		cout << "What artist would you like to search for?" << endl;
+		cin.getline(searchQuery, MAXCHAR, '\n');
+		for (int i = 0; i < size; i++) {
+			if (strcmp(searchQuery, songs[i].artist) == 0)	{
+				searchResults[searchSize++] = songs[i];
+			}
 		}
+	} else if (searchOption == 'b')	{							// 	Search for songs by album
+		cout << "What album would you like to search for?" << endl;
+		cin.getline(searchQuery, MAXCHAR, '\n');
+		for (int i = 0; i < size; i++) {
+			if (strcmp(searchQuery, songs[i].album) == 0) {
+				searchResults[searchSize++] = songs[i];
+			}
+		}
+	} else {
+		cout << "You have entered an invalid option!\n" << endl;			//	Check for invalid input, if invalid break from function
+	}	
+	if (searchSize == 0) {
+		cout << "There are no songs to display from your collection." << endl;
+	} else 	{
+		displayLibrary(searchResults, searchSize);
 	}
-	displayLibrary(searchResults, searchSize);
 }
 
 bool quitProgram()
