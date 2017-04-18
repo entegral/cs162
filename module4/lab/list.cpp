@@ -26,8 +26,24 @@ bool insert(int val, int intList[], int& size)
 
 bool remove(int val, int intList[], int& size)
 {
-	//insert your code here and modify the following line
-	return true;
+	int i = 0;
+	int j = 0;
+	bool temp = true;
+	for (i = 0; i <= size; i++) {
+		if (val == intList[i]) {				//	iterate through list, if value is found, do something. If not, return false
+			temp = true;
+			break;
+		} else {
+			temp = false;
+		}
+	}
+	if (temp == true) {
+		for (j = i; j < size; j++) {
+			intList[j] = intList[j + 1];
+		}
+		size--;
+	}
+	return temp;
 }
 
 void print(const int intList[], int size)
