@@ -29,8 +29,10 @@ void printMenu();
 void displayLibrary(Song[], int &);
 void addToLibrary(Song[], int &);
 void removeFromLibrary();
-void searchForSongs(Song[], int&);
+void searchForSongs(Song [], int &);
 bool quitProgram();
+void openFile(char [], ofstream &);
+void writeData(const Song [], int &, ofstream &);
 void openFile(char [], ifstream &);
 void loadData(ifstream &, Song[], int &);
 
@@ -41,6 +43,7 @@ int main()
 	bool loopControl = true;
 	char fileName[MAXCHAR] = "songs.txt";
 	ifstream inFile;
+	ofstream outFile;
 	int size = 0;
 	Song songs[CAP];
 								// before all else, open file and load data
@@ -56,20 +59,24 @@ int main()
 		switch (menuSelection) 
 		{
 			case 'd':				
-				displayLibrary(songs, size);			// 	MAKE THIS FUNCTION: USE COUT TO PRINT SONGS[SIZE] DATA. INCLUDE
+				displayLibrary(songs, size);			// DONE	MAKE THIS FUNCTION: USE COUT TO PRINT SONGS[SIZE] DATA. INCLUDE
 				break;						// 	INDEX OF SONG FORMATTING
 			case 'a':
-				addToLibrary(songs, size);			// 	MAKE THIS FUNCTION: USE CIN TO RECEIVE INPUT FROM USER
+				addToLibrary(songs, size);			// DONE	MAKE THIS FUNCTION: USE CIN TO RECEIVE INPUT FROM USER
 				break;						//	AND INPUT INTO NEW STRUCT INDEX OF SONGS[SIZE]
 			case 'r':
 				removeFromLibrary();				// 	remove song by index: NOT SURE HOW TO DO THIS YET
 				break;
 			case 's':
-				searchForSongs(songs, size);			// 	Search for song by artist or album
+				searchForSongs(songs, size);			// DONE	Search for song by artist or album
 				break;						//	to only return desired song
 			case 'q':
+				openFile(fileName, outFile);
+				writeData(songs, size, outFile);
 				loopControl = quitProgram();			// DONE
 				break;
+			default:
+				cout << "Invalid selection!" << endl;		//	menu input error handling
 		}
 	}
 };
@@ -80,6 +87,16 @@ void openFile(char fileName[], ifstream &inFile)
 	if(!inFile)
 	{
 		cout << "File did not open, exiting program" << endl;
+		exit(0);
+	}
+}
+
+void openFile(char fileName[], ofstream &outFile)
+{
+	outFile.open(fileName);
+	if(!outFile)
+	{
+		cout << "outFile did not open, exiting program" << endl;
 		exit(0);
 	}
 }
@@ -101,6 +118,14 @@ void loadData(ifstream &inFile, Song songs[], int &size)
 		inFile.get(songs[size].title, MAXCHAR, ';');
 	}
 	inFile.close();
+}
+
+void writeData(const Song songs[], int &size, ofstream &outFile)					//	function to write data out to file
+{
+	for (int i = 0; i < size; i++){
+		outFile << songs[i].title << ";" << songs[i].artist << ";" << songs[i].durationMin << ";" << songs[i].durationSec << ";" << songs[i].album << endl;
+	}
+	outFile.close();
 }
 
 void printMenu()
@@ -170,15 +195,15 @@ void searchForSongs(Song songs[], int &size)										// Search songs:
 		cout << "What artist would you like to search for?" << endl;
 		cin.getline(searchQuery, MAXCHAR, '\n');
 		for (int i = 0; i < size; i++) {
-			if (strcmp(searchQuery, songs[i].artist) == 0)	{
+			if (strstr(songs[i].artist, searchQuery) != NULL)	{
 				searchResults[searchSize++] = songs[i];
 			}
 		}
 	} else if (searchOption == 'b')	{							// 	Search for songs by album
-		cout << "What album would you like to search for?" << endl;
+		cout << "What album would you like to search for?" << endl;			//	-changed strcmp to strstr so substrings could be caught by search
 		cin.getline(searchQuery, MAXCHAR, '\n');
 		for (int i = 0; i < size; i++) {
-			if (strcmp(searchQuery, songs[i].album) == 0) {
+			if (strstr(songs[i].album, searchQuery) != NULL) {
 				searchResults[searchSize++] = songs[i];
 			}
 		}
@@ -194,6 +219,6 @@ void searchForSongs(Song songs[], int &size)										// Search songs:
 
 bool quitProgram()
 {
-	cout << "Fine. You can leave me, go. Really its FINE!  (╯°□°）╯︵ ┻━┻  " << endl;
+	cout << "Fine. Leave me, go. No, really its FINE!  (/°□°)/ ╯︵ ┻━┻  " << endl;
 	return false;
 }
