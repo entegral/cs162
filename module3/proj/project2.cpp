@@ -28,7 +28,7 @@ struct Song
 void printMenu();
 void displayLibrary(Song[], int &);
 void addToLibrary(Song[], int &);
-void removeFromLibrary();
+void removeFromLibrary(Song [], int &);
 void searchForSongs(Song [], int &);
 bool quitProgram();
 void openFile(char [], ofstream &);
@@ -65,7 +65,8 @@ int main()
 				addToLibrary(songs, size);			// DONE	MAKE THIS FUNCTION: USE CIN TO RECEIVE INPUT FROM USER
 				break;						//	AND INPUT INTO NEW STRUCT INDEX OF SONGS[SIZE]
 			case 'r':
-				removeFromLibrary();				// 	remove song by index: NOT SURE HOW TO DO THIS YET
+				displayLibrary(songs,size);
+				removeFromLibrary(songs, size);				// 	remove song by index: NOT SURE HOW TO DO THIS YET
 				break;
 			case 's':
 				searchForSongs(songs, size);			// DONE	Search for song by artist or album
@@ -176,9 +177,22 @@ void addToLibrary(Song songs[], int &size)		// parameters needed: 	the array to 
 	cout << newSong.title << " has been added to the library!" << endl;
 }
 
-void removeFromLibrary()									// Remove song by index
-{												//	- consider string compare to remove by name
-	cout << "[PLACEHOLDER] removed something from library" << endl;
+void removeFromLibrary(Song songs[], int& size)
+{
+        int val;
+	cout << "Enter the index of the song you would like to remove: " << endl;
+	cin >> val;
+	cin.ignore(MAXCHAR,'\n');
+        Song toRemove = songs[val];
+	int j = 0;
+        if (val) {
+                for (j = val; j < size; j++) {
+                        songs[j] = songs[j + 1];
+                }
+                size--;
+        }
+	cout << toRemove.title << " by " << toRemove.artist <<  " was removed from the library!" << endl;
+
 }
 
 void searchForSongs(Song songs[], int &size)										// Search songs:
