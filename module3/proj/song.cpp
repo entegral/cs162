@@ -3,7 +3,7 @@
 
 
 // function definitions
-void charInput(char &input)
+void charInput(char input[])
 {
 	cin.getline(input, MAXCHAR);
 	while(!cin)
