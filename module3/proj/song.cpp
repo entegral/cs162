@@ -12,7 +12,7 @@ char charInput(char &input)
 		cout << "Sorry you input an illegal value. Please try again: ";
 		cin.getline(input, MAXCHAR);
 	}
-	return input;
+	return &input;
 }
 
 int intInput()
