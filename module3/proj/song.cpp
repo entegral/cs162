@@ -3,6 +3,32 @@
 
 
 // function definitions
+char charInput()
+{
+	char input[MAXCHAR];
+	cin.getline(input, MAXCHAR);
+	while(!cin)
+	{
+		cout << "Sorry you input an illegal value. Please try again: ";
+		cin.getline(input, MAXCHAR);
+	}
+	return input;
+}
+
+int intInput()
+{
+	int input;
+	cin >> input;
+	while(!cin)
+	{
+		cout << "Sorry you input an illegal value. Please try again: ";
+		cin >> input;
+	}
+	cin.ignore(MAXCHAR, '\n');
+	return input;
+}
+
+
 void displayLibrary(Song songs[], int &size)
 {
 	cout << "**************************" << endl;
