@@ -3,7 +3,7 @@
 
 
 // function definitions
-char charInput()
+char charInput(char &input)
 {
 	char input[MAXCHAR];
 	cin.getline(input, MAXCHAR);
