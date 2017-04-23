@@ -3,16 +3,15 @@
 
 
 // function definitions
-char charInput(char &input)
+void charInput(char &input)
 {
 	char input[MAXCHAR];
 	cin.getline(input, MAXCHAR);
 	while(!cin)
 	{
-		cout << "Sorry you input an illegal value. Please try again: ";
+		cout << "Sorry you gave an illegal value. Please try again: ";
 		cin.getline(input, MAXCHAR);
 	}
-	return &input;
 }
 
 int intInput()
