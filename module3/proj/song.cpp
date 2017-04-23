@@ -48,17 +48,15 @@ void addToLibrary(Song songs[], int &size)		// parameters needed: 	the array to 
 {							// should pass the address of the original array and its size variable too
 	Song newSong;
 	cout << "What is the title of the song you would like to add? " << endl;
-	cin.getline(newSong.title, MAXCHAR, '\n');
+	charInput(newSong.title);
 	cout << "Who made this song? " << endl;
-	cin.getline(newSong.artist, MAXCHAR, '\n');
+	charInput(newSong.artist);
 	cout << "How many minuets is this song? (don't include seconds yet!) " << endl;
-	cin >> newSong.durationMin;
-	cin.ignore(MAXCHAR, '\n');
+	intInput(newSong.durationMin);
 	cout << "How many seconds remain? " << endl;
-	cin >> newSong.durationSec;
-	cin.ignore(MAXCHAR, '\n');
+	intInput(newSong.durationSec);
 	cout << "What is the name of the album? " << endl;
-	cin.getline(newSong.album, MAXCHAR, '\n');
+	charInput(newSong.album);
 	songs[size++] = newSong;
 	cout << newSong.title << " has been added to the library!" << endl;
 }
