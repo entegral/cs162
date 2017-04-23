@@ -52,9 +52,9 @@ void addToLibrary(Song songs[], int &size)		// parameters needed: 	the array to 
 	cout << "Who made this song? " << endl;
 	charInput(newSong.artist);
 	cout << "How many minuets is this song? (don't include seconds yet!) " << endl;
-	intInput(newSong.durationMin);
+	newSong.durationMin = intInput();
 	cout << "How many seconds remain? " << endl;
-	intInput(newSong.durationSec);
+	newSong.durationSec = intInput();
 	cout << "What is the name of the album? " << endl;
 	charInput(newSong.album);
 	songs[size++] = newSong;
