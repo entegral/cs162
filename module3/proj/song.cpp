@@ -5,7 +5,6 @@
 // function definitions
 void charInput(char &input)
 {
-	char input[MAXCHAR];
 	cin.getline(input, MAXCHAR);
 	while(!cin)
 	{
