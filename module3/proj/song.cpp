@@ -19,6 +19,7 @@ int intInput()
 	cin >> input;
 	while(!cin)
 	{
+		cin.ignore(MAXCHAR, '\n')
 		cout << "Sorry you input an illegal value. Please try again: ";
 		cin >> input;
 	}
