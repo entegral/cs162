@@ -1,0 +1,30 @@
+
+bool insert(int val, int intList[], int& size)
+{
+        //insert your code here and modify the following line
+        int i;
+        int j;
+        if (size == 0) {
+                intList[size++] = val;
+        } else {
+                for (i = 0; i < size; i++){
+                        if(val < intList[i]){
+                                break;                                  //      FUNCTIONAL
+                        }
+                }
+                for(j = size; j >= i; j--) {
+                        intList[j] = intList[j - 1];
+                }
+                intList[i++] = val;
+                size++;
+        }
+        return true;
+}
+
+
+[ ]
+
+[ 4 10 10 25 40 ]
+the list doesn't have 5
+
+[ 10 25 ]
