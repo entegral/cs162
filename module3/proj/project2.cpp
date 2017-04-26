@@ -25,27 +25,26 @@ int main()
 	while(loopControl)
 	{
 		printMenu();
-		cin >> menuSelection;
-		cin.ignore(MAXCHAR, '\n');
+		menuSelection = intInput();
 		switch (menuSelection)
 		{
-			case 'd':
-				displayLibrary(songs, size);			// DONE	MAKE THIS FUNCTION: USE COUT TO PRINT SONGS[SIZE] DATA. INCLUDE
-				break;						// 	INDEX OF SONG FORMATTING
+			case 'd':										// DONE
+				displayLibrary(songs, size);				//
+				break;										//
 			case 'a':
-				addToLibrary(songs, size);			// DONE	MAKE THIS FUNCTION: USE CIN TO RECEIVE INPUT FROM USER
-				break;						//	AND INPUT INTO NEW STRUCT INDEX OF SONGS[SIZE]
+				addToLibrary(songs, size);					// DONE
+				 break;										//
 			case 'r':
 				displayLibrary(songs,size);
-				removeFromLibrary(songs, size);				// 	remove song by index: NOT SURE HOW TO DO THIS YET
+				removeFromLibrary(songs, size);				// DONE
 				break;
 			case 's':
-				searchForSongs(songs, size);			// DONE	Search for song by artist or album
-				break;						//	to only return desired song
+				searchForSongs(songs, size);				// DONE
+				break;										//
 			case 'q':
 				openFile(fileName, outFile);
 				writeData(songs, size, outFile);
-				loopControl = quitProgram();			// DONE
+				loopControl = quitProgram();				// DONE
 				break;
 			default:
 				cout << "Invalid selection!" << endl;		//	menu input error handling

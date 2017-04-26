@@ -65,18 +65,17 @@ void addToLibrary(Song songs[], int &size)		// parameters needed: 	the array to 
 
 void removeFromLibrary(Song songs[], int& size)
 {
-        int val;
+    int val;
 	cout << "Enter the index of the song you would like to remove: " << endl;
-	cin >> val;
-	cin.ignore(MAXCHAR,'\n');
-        Song toRemove = songs[val];
+	val = intInput();
+    Song toRemove = songs[val];
 	int j = 0;
-        if (val) {
-                for (j = val; j < size; j++) {
-                        songs[j] = songs[j + 1];
-                }
-                size--;
-        }
+    if (val) {
+            for (j = val; j < size; j++) {
+                    songs[j] = songs[j + 1];
+            }
+            size--;
+    }
 	cout << toRemove.title << " by " << toRemove.artist <<  " was removed from the library!" << endl;
 
 }
@@ -89,11 +88,10 @@ void searchForSongs(Song songs[], int &size)										// Search songs:
 	Song searchResults[CAP];
 
 	cout << "Would you like to search by (a) Artist, or (b) Album? " << endl;		// 	Search for songs by artist
-	cin >> searchOption;
-	cin.ignore(MAXCHAR, '\n');
+	charInput(searchOption);
 	if (searchOption == 'a') {
 		cout << "What artist would you like to search for?" << endl;
-		cin.getline(searchQuery, MAXCHAR, '\n');
+		charInput(searchQuery);
 		for (int i = 0; i < size; i++) {
 			if (strstr(songs[i].artist, searchQuery) != NULL)	{
 				searchResults[searchSize++] = songs[i];
@@ -101,7 +99,7 @@ void searchForSongs(Song songs[], int &size)										// Search songs:
 		}
 	} else if (searchOption == 'b')	{							// 	Search for songs by album
 		cout << "What album would you like to search for?" << endl;			//	-changed strcmp to strstr so substrings could be caught by search
-		cin.getline(searchQuery, MAXCHAR, '\n');
+		charInput(searchQuery);
 		for (int i = 0; i < size; i++) {
 			if (strstr(songs[i].album, searchQuery) != NULL) {
 				searchResults[searchSize++] = songs[i];
