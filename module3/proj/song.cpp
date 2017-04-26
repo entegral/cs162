@@ -8,6 +8,7 @@ void charArrayInput(char input[])
 	cin.getline(input, MAXCHAR);
 	while(!cin)
 	{
+		cin.clear();
 		cout << "Sorry you gave an illegal value. Please try again: ";
 		cin.getline(input, MAXCHAR);
 	}
@@ -16,12 +17,14 @@ void charArrayInput(char input[])
 char charInput()
 {
 	char input;
-	cin.get(input, MAXCHAR, '\n');
+	cin >> input;
 	cin.ignore(MAXCHAR, '\n');
 	while(!cin)
 	{
+		cin.clear();
 		cout << "Sorry you gave an illegal value. Please try again: ";
-		cin.getline(input, MAXCHAR);
+		cin >> input;
+		cin.ignore(MAXCHAR, '\n');
 	}
 	return input;
 }
