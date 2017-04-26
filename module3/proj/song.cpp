@@ -82,7 +82,7 @@ void removeFromLibrary(Song songs[], int& size)
 
 void searchForSongs(Song songs[], int &size)										// Search songs:
 {												//		- by artist first, if not present
-	char searchOption[];
+	char searchOption[1];
 	char searchQuery[MAXCHAR] = {'\0'};
 	int searchSize = 0;
 	Song searchResults[CAP];
