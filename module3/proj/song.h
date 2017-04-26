@@ -17,7 +17,8 @@ void displayLibrary(Song[], int &);
 void addToLibrary(Song[], int &);
 void removeFromLibrary(Song [], int &);
 void searchForSongs(Song [], int &);
-void charInput(char input[]);
+char charInput();
+void charArrayInput(char input[]);
 int intInput();
 
 
