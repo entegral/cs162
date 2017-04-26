@@ -88,7 +88,7 @@ void searchForSongs(Song songs[], int &size)										// Search songs:
 	Song searchResults[CAP];
 
 	cout << "Enter '1' to search by Artist or \n'2' to search by Album? " << endl;		// 	Search for songs by artist
-	charInput(searchOption);
+	searchOption = intInput();
 	if (searchOption == 1) {
 		cout << "What artist would you like to search for?" << endl;
 		charInput(searchQuery);
