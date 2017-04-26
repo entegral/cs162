@@ -17,7 +17,7 @@ char charInput()
 {
 	char input;
 	cin.get(input, MAXCHAR, '\n');
-	cin.ignore(MAXCHAR, '\n')
+	cin.ignore(MAXCHAR, '\n');
 	while(!cin)
 	{
 		cout << "Sorry you gave an illegal value. Please try again: ";
