@@ -82,14 +82,14 @@ void removeFromLibrary(Song songs[], int& size)
 
 void searchForSongs(Song songs[], int &size)										// Search songs:
 {												//		- by artist first, if not present
-	char searchOption[1];
+	int searchOption;
 	char searchQuery[MAXCHAR] = {'\0'};
 	int searchSize = 0;
 	Song searchResults[CAP];
 
-	cout << "Would you like to search by (a) Artist, or (b) Album? " << endl;		// 	Search for songs by artist
+	cout << "Enter '1' to search by Artist or \n'2' to search by Album? " << endl;		// 	Search for songs by artist
 	charInput(searchOption);
-	if (searchOption == 'a') {
+	if (searchOption == 1) {
 		cout << "What artist would you like to search for?" << endl;
 		charInput(searchQuery);
 		for (int i = 0; i < size; i++) {
@@ -97,7 +97,7 @@ void searchForSongs(Song songs[], int &size)										// Search songs:
 				searchResults[searchSize++] = songs[i];
 			}
 		}
-	} else if (searchOption == 'b')	{							// 	Search for songs by album
+	} else if (searchOption == 2)	{							// 	Search for songs by album
 		cout << "What album would you like to search for?" << endl;			//	-changed strcmp to strstr so substrings could be caught by search
 		charInput(searchQuery);
 		for (int i = 0; i < size; i++) {
