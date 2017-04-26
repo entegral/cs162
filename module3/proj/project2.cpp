@@ -25,7 +25,7 @@ int main()
 	while(loopControl)
 	{
 		printMenu();
-		menuSelection = intInput();
+		charInput(menuSelection);
 		switch (menuSelection)
 		{
 			case 'd':										// DONE

@@ -3,7 +3,7 @@
 
 
 // function definitions
-void charInput(char input[])
+void charArrayInput(char input[])
 {
 	cin.getline(input, MAXCHAR);
 	while(!cin)
@@ -11,6 +11,18 @@ void charInput(char input[])
 		cout << "Sorry you gave an illegal value. Please try again: ";
 		cin.getline(input, MAXCHAR);
 	}
+}
+
+char charInput()
+{
+	char input;
+	cin.getline(input, MAXCHAR);
+	while(!cin)
+	{
+		cout << "Sorry you gave an illegal value. Please try again: ";
+		cin.getline(input, MAXCHAR);
+	}
+	return input;
 }
 
 int intInput()
@@ -50,15 +62,15 @@ void addToLibrary(Song songs[], int &size)		// parameters needed: 	the array to 
 {							// should pass the address of the original array and its size variable too
 	Song newSong;
 	cout << "What is the title of the song you would like to add? " << endl;
-	charInput(newSong.title);
+	charArrayInput(newSong.title);
 	cout << "Who made this song? " << endl;
-	charInput(newSong.artist);
+	charArrayInput(newSong.artist);
 	cout << "How many minuets is this song? (don't include seconds yet!) " << endl;
 	newSong.durationMin = intInput();
 	cout << "How many seconds remain? " << endl;
 	newSong.durationSec = intInput();
 	cout << "What is the name of the album? " << endl;
-	charInput(newSong.album);
+	charArrayInput(newSong.album);
 	songs[size++] = newSong;
 	cout << newSong.title << " has been added to the library!" << endl;
 }
@@ -87,19 +99,19 @@ void searchForSongs(Song songs[], int &size)										// Search songs:
 	int searchSize = 0;
 	Song searchResults[CAP];
 
-	cout << "Enter '1' to search by Artist or \n'2' to search by Album? " << endl;		// 	Search for songs by artist
-	searchOption = intInput();
-	if (searchOption == 1) {
+	cout << "Would you like to (a) search by Artist, or (b) search by Album? " << endl;		// 	Search for songs by artist
+	charInput(searchOption);
+	if (searchOption == 'a') {
 		cout << "What artist would you like to search for?" << endl;
-		charInput(searchQuery);
+		charArrayInput(searchQuery);
 		for (int i = 0; i < size; i++) {
 			if (strstr(songs[i].artist, searchQuery) != NULL)	{
 				searchResults[searchSize++] = songs[i];
 			}
 		}
-	} else if (searchOption == 2)	{							// 	Search for songs by album
+	} else if (searchOption == 'b')	{							// 	Search for songs by album
 		cout << "What album would you like to search for?" << endl;			//	-changed strcmp to strstr so substrings could be caught by search
-		charInput(searchQuery);
+		charArrayInput(searchQuery);
 		for (int i = 0; i < size; i++) {
 			if (strstr(songs[i].album, searchQuery) != NULL) {
 				searchResults[searchSize++] = songs[i];
