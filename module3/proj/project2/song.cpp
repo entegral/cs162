@@ -3,6 +3,8 @@
 
 
 // function definitions
+
+// function for input and validation of character arrays
 void charArrayInput(char input[])
 {
 	cin.getline(input, MAXCHAR);
@@ -15,6 +17,7 @@ void charArrayInput(char input[])
 	return;
 }
 
+// function for input and validation of chars
 char charInput()
 {
 	char input;
@@ -30,6 +33,7 @@ char charInput()
 	return input;
 }
 
+// function for input of intergers
 int intInput()
 {
 	int input;
@@ -45,7 +49,7 @@ int intInput()
 	return input;
 }
 
-
+// function to display all currently loaded song data
 void displayLibrary(Song songs[], int &size)
 {
 	cout << "**************************" << endl;
@@ -64,7 +68,8 @@ void displayLibrary(Song songs[], int &size)
 	return;
 }
 
-void addToLibrary(Song songs[], int &size)		// parameters needed: 	the array to add to AND the current size of it
+// function to add new song objects to the song array
+void addToLibrary(Song songs[], int &size)							// parameters needed: 	the array to add to AND the current size of it
 {												// should pass the address of the original array and its size variable too
 	Song newSong;
 	cout << "What is the title of the song you would like to add? " << endl;
@@ -82,6 +87,7 @@ void addToLibrary(Song songs[], int &size)		// parameters needed: 	the array to 
 	return;
 }
 
+// function to remove a song from a song array
 void removeFromLibrary(Song songs[], int& size)
 {
     int val;
@@ -99,14 +105,15 @@ void removeFromLibrary(Song songs[], int& size)
 	return;
 }
 
+// function to search for songs that might exist within the array
 void searchForSongs(Song songs[], int &size)										// Search songs:
-{																					//		- by artist first, if not present
+{
 	int searchOption;
 	char searchQuery[MAXCHAR] = {'\0'};
 	int searchSize = 0;
 	Song searchResults[CAP];
 
-	cout << "Would you like to (a) search by Artist, or (b) search by Album? " << endl;		// 	Search for songs by artist
+	cout << "Would you like to (a) search by Artist, or (b) search by Album? " << endl;				// Search for songs by artist
 	searchOption = charInput();
 	if (searchOption == 'a') {
 		cout << "What artist would you like to search for?" << endl;
@@ -116,8 +123,8 @@ void searchForSongs(Song songs[], int &size)										// Search songs:
 				searchResults[searchSize++] = songs[i];
 			}
 		}
-	} else if (searchOption == 'b')	{										// 	Search for songs by album
-		cout << "What album would you like to search for?" << endl;			//	-changed strcmp to strstr so substrings could be caught by search
+	} else if (searchOption == 'b')	{									// Search for songs by album
+		cout << "What album would you like to search for?" << endl;					//	-changed strcmp to strstr so substrings could be caught by search
 		charArrayInput(searchQuery);
 		for (int i = 0; i < size; i++) {
 			if (strstr(songs[i].album, searchQuery) != NULL) {
@@ -125,7 +132,7 @@ void searchForSongs(Song songs[], int &size)										// Search songs:
 			}
 		}
 	} else {
-		cout << "You have entered an invalid option!\n" << endl;			//	Check for invalid input, if invalid break from function
+		cout << "You have entered an invalid option!\n" << endl;
 	}
 	if (searchSize == 0) {
 		cout << "There are no songs to display from your collection." << endl;

@@ -4,6 +4,8 @@
 #include "song.h"
 
 // function definitions
+
+// assign a filename to an object so that data can be read from a file
 void openFile(char fileName[], ifstream &inFile)
 {
 	inFile.open(fileName);
@@ -15,6 +17,7 @@ void openFile(char fileName[], ifstream &inFile)
 	return;
 }
 
+// assign a filename to an object so memory data can be written out to file
 void openFile(char fileName[], ofstream &outFile)
 {
 	outFile.open(fileName);
@@ -26,6 +29,7 @@ void openFile(char fileName[], ofstream &outFile)
 	return;
 }
 
+// load song data from file: pass in song array, ifstream object, and the counter for the array size
 void loadData(ifstream &inFile, Song songs[], int &size)
 {
 	inFile.get(songs[size].title, MAXCHAR, ';');
@@ -46,6 +50,7 @@ void loadData(ifstream &inFile, Song songs[], int &size)
 	return;
 }
 
+// iterate through a song array and write that data out to a file per the requested formatting
 void writeData(const Song songs[], int &size, ofstream &outFile)					//	function to write data out to file
 {
 	for (int i = 0; i < size; i++){
