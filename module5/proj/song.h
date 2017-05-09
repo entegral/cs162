@@ -12,9 +12,9 @@ class Song
 		int durationMin;
 		int durationSec;
 	public:
-							// add custom and default constructor for Songs
-							// add mutator and accessor functions for songs
-};
+		placeholder				// add custom and default constructor for Songs
+		placeholder				// add mutator and accessor functions for songs
+};							// 	- mutators - setTitle(), setArtist(), setDurationMin(), setDurationSec(), setAlbum() 
 
 class SongList
 {
