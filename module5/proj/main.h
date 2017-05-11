@@ -14,4 +14,9 @@ const int MAXCHAR = 101;
 void printMenu();
 bool quitProgram();
 
+// tool prototypes
+int intInput();
+char charInput();
+void charArrayInput(char input[]);
+
 #endif

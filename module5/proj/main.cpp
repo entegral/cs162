@@ -16,7 +16,7 @@ int main()
 	ifstream inFile;
 	ofstream outFile;
 	int size = 0;
-	Song songs[CAP];
+	SongList songs;
 
 // use database functions to load data
 	openFile(fileName, inFile);
@@ -30,13 +30,13 @@ int main()
 		switch (menuSelection)
 		{
 			case 'd':										// DONE - song.cpp
-				SongList.displayLibrary(songs, size);				//
+				songs.displayLibrary();				//
 				break;										//
 			case 'a':
-				SongList.addToLibrary(songs, size);					// DONE - song.cpp
+				songs.addToLibrary();					// DONE - song.cpp
 				 break;										//
 			case 'r':
-				SongList.displayLibrary(songs,size);
+				songs.displayLibrary();
 				SongList.removeFromLibrary(songs, size);				// DONE - song.cpp
 				break;
 			case 's':
@@ -73,4 +73,49 @@ bool quitProgram()
 {
 	cout << "Fine. Quit... No, really its FINE!  (/°□°)/ ╯︵ ┻━┻  " << endl;
 	return false;
+}
+
+// function for input and validation of character arrays
+void charArrayInput(char input[])
+{
+	cin.getline(input, MAXCHAR);
+	while(!cin)
+	{
+		cin.clear();
+		cout << "Sorry you gave an illegal value. Please try again: ";
+		cin.getline(input, MAXCHAR);
+	}
+	return;
+}
+
+// function for input and validation of chars
+char charInput()
+{
+	char input;
+	cin >> input;
+	cin.ignore(MAXCHAR, '\n');
+	while(!cin)
+	{
+		cin.clear();
+		cout << "Sorry you gave an illegal value. Please try again: ";
+		cin >> input;
+		cin.ignore(MAXCHAR, '\n');
+	}
+	return input;
+}
+
+// function for input of intergers
+int intInput()
+{
+	int input;
+	cin >> input;
+	while(!cin)
+	{
+		cin.clear();
+		cin.ignore(MAXCHAR, '\n');
+		cout << "Sorry you input an illegal value. Please try again: " << endl;
+		cin >> input;
+	}
+	cin.ignore(MAXCHAR, '\n');
+	return input;
 }

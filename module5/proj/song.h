@@ -6,30 +6,20 @@
 class Song
 {
 	private:
-		char title[MAXCHAR] = {'\0'};
-		char artist[MAXCHAR] = {'\0'};
-		char album[MAXCHAR] = {'\0'};
+		char title[MAXCHAR];
+		char artist[MAXCHAR];
+		char album[MAXCHAR];
 		int durationMin;
 		int durationSec;
+
+// add custom and default constructor for Songs
+// add mutator and accessor functions for songs
+//	 	- mutators - setTitle(), setArtist(), setDurationMin(), setDurationSec(), setAlbum()
 	public:
-		placeholder				// add custom and default constructor for Songs
-		placeholder				// add mutator and accessor functions for songs
-};							// 	- mutators - setTitle(), setArtist(), setDurationMin(), setDurationSec(), setAlbum() 
+		song();
+		song(char [], char [], int, int, char []);
+		void printSongInfo()
+};
 
-class SongList
-{
-	private:
-		Song List[CAP];
-
-	public:
-		void displayLibrary(Song[], int &);i
-		void addToLibrary(Song[], int &);
-		void removeFromLibrary(Song [], int &);
-		void searchForSongs(Song [], int &);
-}
-
-int intInput();
-char charInput();
-void charArrayInput(char input[]);
 
 #endif

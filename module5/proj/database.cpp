@@ -30,7 +30,7 @@ void openFile(char fileName[], ofstream &outFile)
 }
 
 // load song data from file: pass in song array, ifstream object, and the counter for the array size
-void loadData(ifstream &inFile, Song songs[], int &size)
+void loadData(ifstream &inFile, SongList songs, int &size)
 {
 	inFile.get(songs[size].title, MAXCHAR, ';');
 	while(inFile)
