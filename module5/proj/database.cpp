@@ -1,6 +1,4 @@
 // database.cpp
-
-#include "database.h"
 #include "song.h"
 
 // function definitions

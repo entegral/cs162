@@ -1,9 +1,7 @@
 // song.h
 #ifndef song_h
 #define song_h
-#include <iostream>
-#include <cstring>
-#include <fstream>
+
 using namespace std;
 
 // constants

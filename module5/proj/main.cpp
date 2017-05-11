@@ -3,9 +3,8 @@
 	Citations: 	1) C++ Programming: From Problem Analysis to Program Design
 			2) Class Texts/Handouts
 */
-#include "main.h"
 #include "song.h"
-#include "database.h"
+
 
 int main()
 {
