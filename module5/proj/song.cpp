@@ -54,3 +54,9 @@ void Song::setAlbum(aAlbum)
 {
 	strcpy(album, aAlbum);
 }
+
+//prints formatted song for writing to file
+void Video::writeSong(ofstream &outFile)
+{
+	outFile << title << ';' << artist << ';' << durationMin << ';' << durationSec << ';' << album << endl;
+}

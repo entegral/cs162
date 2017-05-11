@@ -1,6 +1,6 @@
 // song.h
-#ifndef song_h
-#define song_h
+#ifndef SONG_H
+#define SONG_H
 
 #include <iostream>
 #include <fstream>
@@ -34,11 +34,12 @@ class Song
 		void printSongInfo();
 
 		// mutator functions
-		void setTitle();
-		void setArtist();
-		void setDurationMin();
-		void setDurationSec();
-		void setAlbum();
+		void setTitle(char []);
+		void setArtist(char []);
+		void setDurationMin(int);
+		void setDurationSec(int);
+		void setAlbum(char []);
+		void writeSong(ofstream &);
 };
 
 

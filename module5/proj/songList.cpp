@@ -7,7 +7,7 @@ SongList::songList()
     size = 0;
 }
 
-// constructor from file
+// constructor - read from file
 SongList::songList(char fileName[])
 {
     Song aSong;
@@ -135,5 +135,22 @@ void SongList::searchForSongs(Song songs[], int &size)										// Search songs:
 	} else 	{
 		displayLibrary(searchResults, searchSize);
 	}
+	return;
+}
+
+// writes data to file
+void writeData(ofstream &outFile)
+{
+	outFile.open(fileName);
+	if(!outFile)
+	{
+		cout << "outFile did not open, exiting program" << endl;
+		exit(0);
+	}
+
+	for (int i = 0; i < size; i++){
+		list[i].writeSong(outFile);
+	}
+	outFile.close();
 	return;
 }
