@@ -1,7 +1,29 @@
 // song.h
 #ifndef song_h
 #define song_h
-#include "main.h"
+#include <iostream>
+#include <cstring>
+#include <fstream>
+using namespace std;
+
+// constants
+const int CAP = 100;
+const int MAXCHAR = 101;
+
+// main function prototypes
+void printMenu();
+bool quitProgram();
+
+// tool prototypes
+int intInput();
+char charInput();
+void charArrayInput(char input[]);
+
+// database funtion prototypes
+void openFile(char [], ofstream &);
+void writeData(const Song [], int &, ofstream &);
+void openFile(char [], ifstream &);
+void loadData(ifstream &, Song[], int &);
 
 class Song
 {
@@ -19,6 +41,20 @@ class Song
 		song();
 		song(char [], char [], int, int, char []);
 		void printSongInfo();
+};
+
+class SongList
+{
+	private:
+		Song list[CAP];
+        int size;
+
+	public:
+        songList();
+        void addToLibrary(Song[], int &);
+		void displayLibrary(Song[], int &);
+		void removeFromLibrary(Song [], int &);
+		void searchForSongs(Song [], int &);
 };
 
 
