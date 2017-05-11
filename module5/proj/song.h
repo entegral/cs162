@@ -12,21 +12,6 @@ using namespace std;
 const int CAP = 100;
 const int MAXCHAR = 101;
 
-// main function prototypes
-void printMenu();
-bool quitProgram();
-
-// tool prototypes
-int intInput();
-char charInput();
-void charArrayInput(char input[]);
-
-// database funtion prototypes
-void openFile(char [], ofstream &);
-void writeData(const Song [], int &, ofstream &);
-void openFile(char [], ifstream &);
-void loadData(ifstream &, Song[], int &);
-
 class Song
 {
 	private:
@@ -59,5 +44,19 @@ class SongList
 		void searchForSongs(Song [], int &);
 };
 
+// main function prototypes
+void printMenu();
+bool quitProgram();
+
+// tool prototypes
+int intInput();
+char charInput();
+void charArrayInput(char input[]);
+
+// database funtion prototypes
+void openFile(char [], ofstream &);
+void writeData(const Song [], int &, ofstream &);
+void openFile(char [], ifstream &);
+void loadData(ifstream &, Song[], int &);
 
 #endif
