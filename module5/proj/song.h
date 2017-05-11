@@ -18,7 +18,7 @@ class Song
 	public:
 		song();
 		song(char [], char [], int, int, char []);
-		void printSongInfo()
+		void printSongInfo();
 };
 
 

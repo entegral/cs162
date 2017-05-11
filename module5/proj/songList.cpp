@@ -40,8 +40,8 @@ void SongList::addToLibrary()
 	int durationSec = intInput();
 	cout << "What is the name of the album? " << endl;
 	charArrayInput(char album[]);
-    Song aSong = song(title, artist, durationMin, durationSec, album);
-    this->list[size++] = aSong;
+	Song aSong = song(title, artist, durationMin, durationSec, album);
+	this->list[size++] = aSong;
 	cout << aSong.title << " has been added to the library!" << endl;
 	return;
 }
