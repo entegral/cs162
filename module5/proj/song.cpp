@@ -2,7 +2,7 @@
 #include "song.h"
 
 // function definitions
-Song::song()
+Song::Song()
 {
 	strcpy(title, "Untitled");
 	strcpy(artist, "Not Applicable");
@@ -11,7 +11,7 @@ Song::song()
 	strcpy(Album, "Untitled");
 }
 
-Song::song(char aTitle[], char aArtist, int aDurationMin, int aDurationSec, char aAlbum[])
+Song::Song(char aTitle[], char aArtist, int aDurationMin, int aDurationSec, char aAlbum[])
 {
 	strcpy(title, aTitle);
 	strcpy(title, aArtist);

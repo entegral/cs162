@@ -26,9 +26,9 @@ class Song
 //	 	- mutators - setTitle(), setArtist(), setDurationMin(), setDurationSec(), setAlbum()
 	public:
 		// constructor
-		song();
+		Song();
 		// constructor with params
-		song(char [], char [], int, int, char []);
+		Song(char [], char [], int, int, char []);
 
 		// accessor functions
 		void printSongInfo();

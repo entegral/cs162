@@ -4,7 +4,7 @@
 			2) Class Texts/Handouts
 */
 #include "song.h"
-
+#include "tools.h"
 
 int main()
 {
