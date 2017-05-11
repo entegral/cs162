@@ -2,13 +2,13 @@
 #include "songList.h"
 
 // default constructor
-SongList::songList()
+SongList::SongList()
 {
     size = 0;
 }
 
 // constructor - read from file
-SongList::songList(char fileName[])
+SongList::SongList(char fileName[])
 {
     Song aSong;
     char tempTitle[MAXCHAR], tempArtist[MAXCHAR], tempAlbum[MAXCHAR];
@@ -41,7 +41,7 @@ SongList::songList(char fileName[])
 }
 
 // destructors
-SongList::~songList()
+SongList::~SongList()
 {
     // nothing to do
 }

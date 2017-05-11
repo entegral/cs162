@@ -13,10 +13,10 @@ class SongList
 
 	public:
 		// constructors
-		songList();
-		songList(char fileName[]);
+		SongList();
+		SongList(char fileName[]);
 		// destructors
-		~songList();
+		~SongList();
 
         void addToLibrary(Song[], int &);
 		void displayLibrary(Song[], int &);
