@@ -17,10 +17,6 @@ int main()
 	int size = 0;
 	SongList songs(fileName);
 
-// use database functions to load data
-	openFile(fileName, inFile);
-	loadData(inFile, songs, size);
-
 // Menu - use loop and switch, each switch calls a function for the respective purpose
 	while(loopControl)
 	{
