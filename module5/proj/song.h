@@ -2,6 +2,10 @@
 #ifndef song_h
 #define song_h
 
+#include <iostream>
+#include <fstream>
+#include <cstring>
+
 using namespace std;
 
 // constants
