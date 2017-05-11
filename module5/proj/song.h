@@ -25,24 +25,22 @@ class Song
 // add mutator and accessor functions for songs
 //	 	- mutators - setTitle(), setArtist(), setDurationMin(), setDurationSec(), setAlbum()
 	public:
+		// constructor
 		song();
+		// constructor with params
 		song(char [], char [], int, int, char []);
+
+		// accessor functions
 		void printSongInfo();
+
+		// mutator functions
+		void setTitle();
+		void setArtist();
+		void setDurationMin();
+		void setDurationSec();
+		void setAlbum();
 };
 
-class SongList
-{
-	private:
-		Song list[CAP];
-        int size;
-
-	public:
-        songList();
-        void addToLibrary(Song[], int &);
-		void displayLibrary(Song[], int &);
-		void removeFromLibrary(Song [], int &);
-		void searchForSongs(Song [], int &);
-};
 
 // main function prototypes
 void printMenu();
