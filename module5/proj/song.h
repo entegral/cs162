@@ -42,20 +42,4 @@ class Song
 		void writeSong(ofstream &);
 };
 
-
-// main function prototypes
-void printMenu();
-bool quitProgram();
-
-// tool prototypes
-int intInput();
-char charInput();
-void charArrayInput(char input[]);
-
-// database funtion prototypes
-void openFile(char [], ofstream &);
-void writeData(const Song [], int &, ofstream &);
-void openFile(char [], ifstream &);
-void loadData(ifstream &, Song[], int &);
-
 #endif

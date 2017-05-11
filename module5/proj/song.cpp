@@ -1,7 +1,6 @@
 // song.cpp
 #include "song.h"
 
-
 // function definitions
 Song::song()
 {
