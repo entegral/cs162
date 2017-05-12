@@ -38,7 +38,7 @@ SongList::SongList(char fileName[])
         // populate aSong
         aSong = Song(tempTitle, tempArtist, tempMin, tempSec, tempAlbum);
         size++;
-		inFile.get(tempTitle, MAXCHAR, ';');
+		inFile.getline(tempTitle, MAXCHAR, ';');
 	}
 	inFile.close();
 }
