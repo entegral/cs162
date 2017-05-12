@@ -13,8 +13,6 @@ int main()
 	bool loopControl = true;
 	char fileName[MAXCHAR] = "songs.txt";
 
-	ofstream outFile;
-	int size = 0;
 	SongList songs(fileName);
 
 // Menu - use loop and switch, each switch calls a function for the respective purpose
