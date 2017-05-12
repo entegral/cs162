@@ -14,10 +14,10 @@ Song::Song()
 Song::Song(char aTitle[], char aArtist[], int aDurationMin, int aDurationSec, char aAlbum[])
 {
 	strcpy(title, aTitle);
-	strcpy(title, aArtist);
+	strcpy(artist, aArtist);
 	this->durationMin = aDurationMin;
 	this->durationSec = aDurationSec;
-	strcpy(title, aAlbum);
+	strcpy(album, aAlbum);
 }
 
 void Song::printSongInfo()
@@ -26,7 +26,6 @@ void Song::printSongInfo()
 	cout << "Artist: " << this->artist << endl;
 	cout << "Duration: " << this->durationMin << ":" << this->durationSec << endl;
 	cout << "Album: " << this->album << endl;
-	cout << endl;
 }
 
 void Song::setTitle(char aTitle[])
