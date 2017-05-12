@@ -1,2 +1,2 @@
 all:
-	g++ main.cpp song.cpp songList.cpp -o project2
+	g++ main.cpp tools.cpp song.cpp songList.cpp -o project3 

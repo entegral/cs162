@@ -32,14 +32,13 @@ int main()
 				 break;										//
 			case 'r':
 				songs.displayLibrary();
-				SongList.removeFromLibrary(songs, size);				// DONE - song.cpp
+				songs.removeFromLibrary();				// DONE - song.cpp
 				break;
-			case 's':
-				SongList.searchForSongs(songs, size);				// DONE - song.cpp
-				break;										//
+			// case 's':
+			// 	songs.searchForSongs();				// DONE - song.cpp
+			// 	break;										//
 			case 'q':
-				openFile(fileName, outFile);				// DONE - database.cpp
-				writeData(songs, size, outFile);			// DONE - database.cpp
+				songs.writeData(fileName);				// DONE - database.cpp
 				loopControl = quitProgram();				// DONE - main.cpp
 				break;
 			default:

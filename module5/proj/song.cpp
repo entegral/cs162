@@ -8,10 +8,10 @@ Song::Song()
 	strcpy(artist, "Not Applicable");
 	this->durationMin = -1;
 	this->durationSec = -1;
-	strcpy(Album, "Untitled");
+	strcpy(album, "Untitled");
 }
 
-Song::Song(char aTitle[], char aArtist, int aDurationMin, int aDurationSec, char aAlbum[])
+Song::Song(char aTitle[], char aArtist[], int aDurationMin, int aDurationSec, char aAlbum[])
 {
 	strcpy(title, aTitle);
 	strcpy(title, aArtist);
@@ -29,33 +29,53 @@ void Song::printSongInfo()
 	cout << endl;
 }
 
-void Song::setTitle(aTitle)
+void Song::setTitle(char aTitle[])
 {
 	strcpy(title, aTitle);
 }
 
-void Song::setArtist(aArtist)
+void Song::setArtist(char aArtist[])
 {
 	strcpy(artist, aArtist);
 }
 
-void Song::setDurationMin(aDurationMin)
+void Song::setDurationMin(int aDurationMin)
 {
 	durationMin = aDurationMin;
 }
 
-void Song::setDurationSec(aDurationSec)
+void Song::setDurationSec(int aDurationSec)
 {
 	durationSec = aDurationSec;
 }
 
-void Song::setAlbum(aAlbum)
+void Song::setAlbum(char aAlbum[])
 {
 	strcpy(album, aAlbum);
 }
 
 //prints formatted song for writing to file
-void Video::writeSong(ofstream &outFile)
+void Song::writeSong(ofstream &outFile)
 {
 	outFile << title << ';' << artist << ';' << durationMin << ';' << durationSec << ';' << album << endl;
+}
+
+void Song::getTitle()
+{
+	cout << "Title: " << this->title << endl;
+}
+
+void Song::getArtist()
+{
+	cout << "Artist: " << this->artist << endl;
+}
+
+void Song::getDuration()
+{
+		cout << "Duration: " << this->durationMin << ":" << this->durationSec << endl;
+}
+
+void Song::getAlbum()
+{
+	cout << "Album: " << this->album << endl;
 }
