@@ -79,3 +79,27 @@ void Song::getAlbum()
 {
 	cout << "Album: " << this->album << endl;
 }
+
+bool Song::compareArtist(char searchQuery[])
+{
+	if (strstr(this->artist, searchQuery) != NULL)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+
+bool Song::compareAlbum(char searchQuery[])
+{
+	if (strstr(this->artist, searchQuery) != NULL)
+        {
+                return false;
+        }
+        else
+        {
+                return true;
+        }
+}

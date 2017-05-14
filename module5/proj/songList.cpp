@@ -1,6 +1,7 @@
 // songList.cpp
 #include "songList.h"
 #include "tools.h"
+#include <cstring>
 
 // default constructor
 SongList::SongList()
@@ -66,6 +67,21 @@ void SongList::displayLibrary()
 	return;
 }
 
+// overloaded display SongList function
+void SongList::displayLibrary(Song result[], int size)
+{	
+	cout << "**************************" << endl;
+	cout << "****Collection Results****" << endl;
+	cout << "**************************" << endl;
+	for(int i = 0; i < size; i++)
+	{
+		result[i].printSongInfo();
+	}
+	cout << "*************************" << endl;
+	return;
+}
+
+
 // function to add new song objects to the song array
 // UPDATED FOR CLASSES
 void SongList::addToLibrary()
@@ -119,41 +135,41 @@ void SongList::removeFromLibrary()
 }
 
 // function to search for songs that might exist within the array
-// void SongList::searchForSongs()										// Search songs:
-// {
-// 	int searchOption;
-// 	char searchQuery[MAXCHAR] = {'\0'};
-// 	int searchSize = 0;
-// 	Song searchResults[CAP];
-//
-// 	cout << "Would you like to (a) search by Artist, or (b) search by Album? " << endl;				// Search for songs by artist
-// 	searchOption = charInput();
-// 	if (searchOption == 'a') {
-// 		cout << "What artist would you like to search for?" << endl;
-// 		charArrayInput(searchQuery);
-// 		for (int i = 0; i < size; i++) {
-// 			if (strstr(songs[i].artist, searchQuery) != NULL)	{
-// 				searchResults[searchSize++] = songs[i];
-// 			}
-// 		}
-// 	} else if (searchOption == 'b')	{									// Search for songs by album
-// 		cout << "What album would you like to search for?" << endl;					//	-changed strcmp to strstr so substrings could be caught by search
-// 		charArrayInput(searchQuery);
-// 		for (int i = 0; i < size; i++) {
-// 			if (strstr(songs[i].album, searchQuery) != NULL) {
-// 				searchResults[searchSize++] = songs[i];
-// 			}
-// 		}
-// 	} else {
-// 		cout << "You have entered an invalid option!\n" << endl;
-// 	}
-// 	if (searchSize == 0) {
-// 		cout << "There are no songs to display from your collection." << endl;
-// 	} else 	{
-// 		displayLibrary(searchResults, searchSize);
-// 	}
-// 	return;
-// }
+void SongList::searchForSongs()										// Search songs:
+ {
+ 	int searchOption;
+ 	char searchQuery[MAXCHAR] = {'\0'};
+ 	int searchSize = 0;
+ 	Song searchResults[CAP];
+
+ 	cout << "Would you like to (a) search by Artist, or (b) search by Album? " << endl;				// Search for songs by artist
+ 	searchOption = charInput();
+ 	if (searchOption == 'a') {
+ 		cout << "What artist would you like to search for?" << endl;
+ 		charArrayInput(searchQuery);
+ 		for (int i = 0; i < size; i++) {
+ 			if (list[i].compareArtist(searchQuery))	{
+ 				searchResults[searchSize++] = list[i];
+ 			}
+ 		}
+ 	} else if (searchOption == 'b')	{									// Search for songs by album
+ 		cout << "What album would you like to search for?" << endl;					//	-changed strcmp to strstr so substrings could be caught by search
+ 		charArrayInput(searchQuery);
+ 		for (int i = 0; i < size; i++) {
+ 			if (list[i].compareAlbum(searchQuery)) {
+ 				searchResults[searchSize++] = list[i];
+ 			}
+ 		}
+ 	} else {
+ 		cout << "You have entered an invalid option!\n" << endl;
+ 	}
+ 	if (searchSize == 0) {
+ 		cout << "There are no songs to display from your collection." << endl;
+ 	} else 	{
+ 		displayLibrary(searchResults, searchSize);
+ 	}
+ 	return;
+ }
 
 // writes data to file
 void SongList::writeData(char fileName[])
