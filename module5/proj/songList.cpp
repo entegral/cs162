@@ -38,7 +38,7 @@ SongList::SongList(char fileName[])
 
         // populate aSong
         aSong = Song(tempTitle, tempArtist, tempMin, tempSec, tempAlbum);
-        size++;
+        list[size++] = aSong;
 		inFile.getline(tempTitle, MAXCHAR, ';');
 	}
 	inFile.close();
@@ -62,6 +62,7 @@ void SongList::displayLibrary()
 	for(int i = 0; i < size; i++)
 	{
 		list[i].printSongInfo();
+        cout << "Index: " << i << endl;
 	}
 	cout << "*************************" << endl;
 	return;
