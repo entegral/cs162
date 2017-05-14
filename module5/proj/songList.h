@@ -18,9 +18,11 @@ class SongList
 		// destructors
 		~SongList();
 
-        void addToLibrary();
+	        void addToLibrary();
 		void displayLibrary();
+		void displayLibrary(Song [], int);
 		void removeFromLibrary();
+		void searchForSongs();
 		// void searchForSongs();
 		void writeData(char []);
 };

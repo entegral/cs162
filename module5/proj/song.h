@@ -36,6 +36,8 @@ class Song
 		void getArtist();
 		void getDuration();
 		void getAlbum();
+		bool compareArtist(char []);
+		bool compareAlbum(char []);
 
 		// mutator functions
 		void setTitle(char []);

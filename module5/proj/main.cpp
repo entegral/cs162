@@ -8,7 +8,7 @@
 
 int main()
 {
-
+	cout << "Welcome to Lyric Music Library!" << endl;
 	char menuSelection;
 	bool loopControl = true;
 	char fileName[MAXCHAR] = "songs.txt";
@@ -32,9 +32,9 @@ int main()
 				songs.displayLibrary();
 				songs.removeFromLibrary();				// DONE - song.cpp
 				break;
-			// case 's':
-			// 	songs.searchForSongs();				// DONE - song.cpp
-			// 	break;										//
+			case 's':
+			 	songs.searchForSongs();				// DONE - song.cpp
+			 	break;										//
 			case 'q':
 				songs.writeData(fileName);				// DONE - database.cpp
 				loopControl = quitProgram();				// DONE - main.cpp
