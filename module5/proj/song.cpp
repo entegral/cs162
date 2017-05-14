@@ -83,22 +83,22 @@ bool Song::compareArtist(char searchQuery[])
 {
 	if (strstr(this->artist, searchQuery) != NULL)
 	{
-		return false;
+		return true;
 	}
 	else
 	{
-		return true;
+		return false;
 	}
 }
 
 bool Song::compareAlbum(char searchQuery[])
 {
-	if (strstr(this->artist, searchQuery) != NULL)
+	if (strstr(this->album, searchQuery) != NULL)
         {
-                return false;
+                return true;
         }
         else
         {
-                return true;
+                return false;
         }
 }
