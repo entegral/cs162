@@ -18,6 +18,7 @@ SongList::SongList(char fileName[])
     int tempMin, tempSec;
     ifstream inFile;
 
+    // open file using 'filename'
     inFile.open(fileName);
 	if(!inFile)
 	{
@@ -25,7 +26,7 @@ SongList::SongList(char fileName[])
 		exit(0);
 	}
 
-    // file opened, now load data to object
+    // file opened, now load data from file to object
     inFile.getline(tempTitle, MAXCHAR, ';');
 	while(!inFile.eof())
 	{
@@ -61,8 +62,8 @@ void SongList::displayLibrary()
 	cout << "**************************" << endl;
 	for(int i = 0; i < size; i++)
 	{
-		list[i].printSongInfo();
-        cout << "Index: " << i << endl;
+            list[i].printSongInfo();
+            cout << "Index: " << i << endl;
 	}
 	cout << "*************************" << endl;
 	return;

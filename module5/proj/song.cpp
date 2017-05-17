@@ -4,20 +4,41 @@
 // function definitions
 Song::Song()
 {
-	strcpy(title, "Untitled");
-	strcpy(artist, "Not Applicable");
+	title = new char[strlen("Untitled") + 1];
+	strcpy(this->title, title);
+	artist = new char[strlen("No Artist")+1];
+	strcpy(this->artist, artist);
 	this->durationMin = -1;
 	this->durationSec = -1;
-	strcpy(album, "Untitled");
+	album = new char[strlen("No Album") + 1];
+	strcpy(this->album, album);
 }
 
 Song::Song(char aTitle[], char aArtist[], int aDurationMin, int aDurationSec, char aAlbum[])
 {
+	this->title = new char[strlen(aTitle) + 1];
+	this->artist = new char[strlen(aArtist) + 1];
 	strcpy(title, aTitle);
 	strcpy(artist, aArtist);
 	this->durationMin = aDurationMin;
 	this->durationSec = aDurationSec;
+	this->album = new char[strlen(aAlbum) + 1];
 	strcpy(album, aAlbum);
+}
+
+Song::~Song()
+{
+	if(title != NULL){
+		delete [] title;
+	}
+
+	if(artist != NULL){
+		delete [] artist;
+	}
+
+	if(album != NULL){
+		delete [] album;
+	}	
 }
 
 void Song::printSongInfo()
@@ -29,12 +50,20 @@ void Song::printSongInfo()
 }
 
 void Song::setTitle(char aTitle[])
-{
+{	
+	if(title != NULL){
+		delete [] title;
+	}
+	title = new char[strlen(aTitle) + 1];
 	strcpy(title, aTitle);
 }
 
 void Song::setArtist(char aArtist[])
 {
+	if(artist != NULL){
+		delete [] artist;
+	}
+	artist = new char[strlen(aArtist) + 1];
 	strcpy(artist, aArtist);
 }
 
@@ -50,6 +79,10 @@ void Song::setDurationSec(int aDurationSec)
 
 void Song::setAlbum(char aAlbum[])
 {
+	if(album != NULL){
+		delete [] album;
+	}
+	album = new char[strlen(aAlbum) + 1];
 	strcpy(album, aAlbum);
 }
 

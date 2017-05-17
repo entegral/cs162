@@ -15,9 +15,9 @@ const int MAXCHAR = 101;
 class Song
 {
 	private:
-		char title[MAXCHAR];
-		char artist[MAXCHAR];
-		char album[MAXCHAR];
+		char* title;
+		char* artist;
+		char* album;
 		int durationMin;
 		int durationSec;
 

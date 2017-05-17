@@ -8,8 +8,8 @@
 class SongList
 {
 	private:
-		Song list[CAP];
-        int size;
+		Song* list;
+		int size;
 
 	public:
 		// constructors
