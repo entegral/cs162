@@ -48,6 +48,9 @@ class Song
 		void setDurationSec(int);
 		void setAlbum(char []);
 		void writeSong(ofstream &);
+
+		// operator functions (ORM)
+		const Song& operator=(const Song&);
 };
 
 #endif

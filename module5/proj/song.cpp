@@ -141,3 +141,21 @@ bool Song::compareAlbum(char searchQuery[])
                 return false;
         }
 }
+
+const Song& Song::operator=(const Song& aSong)
+{
+	if (this == &aSong)
+	{
+		return *this;
+	}
+	strcpy(title,aSong.title);				// stringcopy
+	strcpy(artist,aSong.artist);
+	durationMin = aSong.durationMin;
+	durationSec = aSong.durationSec;
+	strcpy(album,aSong.album);
+	return *this;
+}
+
+
+
+
