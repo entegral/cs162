@@ -12,7 +12,7 @@ SongList::SongList()
 	delete [] list;
 	list = NULL;
     }
-    
+
 }
 
 // constructor - read from file
@@ -84,7 +84,7 @@ void SongList::displayLibrary()
 
 // overloaded display SongList function
 void SongList::displayLibrary(Song result[], int size)
-{	
+{
 	cout << "**************************" << endl;
 	cout << "****Collection Results****" << endl;
 	cout << "**************************" << endl;
@@ -186,6 +186,7 @@ void SongList::searchForSongs()										// Search songs:
  }
 
 // writes data to file
+// incorporated overloaded '<<' to allow for direct output of song objects
 void SongList::writeData(char fileName[])
 {
     ofstream outFile;
@@ -197,7 +198,7 @@ void SongList::writeData(char fileName[])
 	}
 
 	for (int i = 0; i < size; i++){
-		list[i].writeSong(outFile);
+		outFile << list[i]
 	}
 	outFile.close();
 	return;

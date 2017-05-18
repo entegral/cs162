@@ -51,6 +51,7 @@ class Song
 
 		// operator functions (ORM)
 		const Song& operator=(const Song&);
+		friend ostream& operator<<(ostream&, const Song&);
 };
 
 #endif

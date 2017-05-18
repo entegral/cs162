@@ -41,7 +41,7 @@ Song::~Song()
 	if(album != "no album"){
 		delete [] album;
 		album = NULL;
-	}	
+	}
 }
 
 void Song::printSongInfo()
@@ -53,7 +53,7 @@ void Song::printSongInfo()
 }
 
 void Song::setTitle(char aTitle[])
-{	
+{
 	if(title != NULL){
 		delete [] title;
 		title = NULL;
@@ -156,6 +156,8 @@ const Song& Song::operator=(const Song& aSong)
 	return *this;
 }
 
-
-
-
+ostream& Song::operator<< (ostream& os, const Song& aSong)
+{
+	os << aSong.title << ';' << aSong.artist << ';' << aSong.durationMin << ';' << aSong.durationSec << ';' << aSong.album << endl;
+	return os;
+}
