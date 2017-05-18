@@ -29,6 +29,8 @@ class Song
 		Song();
 		// constructor with params
 		Song(char [], char [], int, int, char []);
+		// destructor
+		~Song();
 
 		// accessor functions
 		void printSongInfo();

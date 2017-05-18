@@ -18,12 +18,12 @@ Song::Song(char aTitle[], char aArtist[], int aDurationMin, int aDurationSec, ch
 {
 	this->title = new char[strlen(aTitle) + 1];
 	this->artist = new char[strlen(aArtist) + 1];
-	strcpy(title, aTitle);
-	strcpy(artist, aArtist);
+	strcpy(this->title, aTitle);
+	strcpy(this->artist, aArtist);
 	this->durationMin = aDurationMin;
 	this->durationSec = aDurationSec;
 	this->album = new char[strlen(aAlbum) + 1];
-	strcpy(album, aAlbum);
+	strcpy(this->album, aAlbum);
 }
 
 Song::~Song()
@@ -51,20 +51,20 @@ void Song::printSongInfo()
 
 void Song::setTitle(char aTitle[])
 {	
-	if(title != NULL){
-		delete [] title;
+	if(this->title != NULL){
+		delete [] this->title;
 	}
-	title = new char[strlen(aTitle) + 1];
-	strcpy(title, aTitle);
+	this->title = new char[strlen(aTitle) + 1];
+	strcpy(this->title, aTitle);
 }
 
 void Song::setArtist(char aArtist[])
 {
-	if(artist != NULL){
-		delete [] artist;
+	if(this->artist != NULL){
+		delete [] this->artist;
 	}
-	artist = new char[strlen(aArtist) + 1];
-	strcpy(artist, aArtist);
+	this->artist = new char[strlen(aArtist) + 1];
+	strcpy(this->artist, aArtist);
 }
 
 void Song::setDurationMin(int aDurationMin)
@@ -79,17 +79,17 @@ void Song::setDurationSec(int aDurationSec)
 
 void Song::setAlbum(char aAlbum[])
 {
-	if(album != NULL){
-		delete [] album;
+	if(this->album != NULL){
+		delete [] this->album;
 	}
-	album = new char[strlen(aAlbum) + 1];
-	strcpy(album, aAlbum);
+	this->album = new char[strlen(aAlbum) + 1];
+	strcpy(this->album, aAlbum);
 }
 
 //prints formatted song for writing to file
 void Song::writeSong(ofstream &outFile)
 {
-	outFile << title << ';' << artist << ';' << durationMin << ';' << durationSec << ';' << album << endl;
+	outFile << this->title << ';' << this->artist << ';' << durationMin << ';' << durationSec << ';' << this->album << endl;
 }
 
 void Song::getTitle()

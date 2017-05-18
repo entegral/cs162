@@ -13,7 +13,6 @@ SongList::SongList()
 SongList::SongList(char fileName[])
 {
     size = 0;
-    Song aSong;
     char tempTitle[MAXCHAR], tempArtist[MAXCHAR], tempAlbum[MAXCHAR];
     int tempMin, tempSec;
     ifstream inFile;
@@ -37,9 +36,9 @@ SongList::SongList(char fileName[])
 		inFile.ignore(100, ';');
 		inFile.getline(tempAlbum, MAXCHAR);
 
-        // populate aSong
-        aSong = Song(tempTitle, tempArtist, tempMin, tempSec, tempAlbum);
-        list[size++] = aSong;
+        	// populate aSong
+		list = new Song[CAP];
+		list[size++] = Song(tempTitle, tempArtist, tempMin, tempSec, tempAlbum);
 		inFile.getline(tempTitle, MAXCHAR, ';');
 	}
 	inFile.close();
@@ -49,6 +48,9 @@ SongList::SongList(char fileName[])
 SongList::~SongList()
 {
     // nothing to do
+	if (list != NULL){
+		delete [] list;
+	}
 }
 
 
@@ -105,13 +107,13 @@ void SongList::addToLibrary()
 	cout << "What is the name of the album? " << endl;
 	charArrayInput(tempAlbum);
 	aSong.setTitle(tempTitle);
-    aSong.setArtist(tempArtist);
-    aSong.setDurationMin(tempDurationMin);
-    aSong.setDurationSec(tempDurationSec);
-    aSong.setAlbum(tempAlbum);
+    	aSong.setArtist(tempArtist);
+    	aSong.setDurationMin(tempDurationMin);
+    	aSong.setDurationSec(tempDurationSec);
+    	aSong.setAlbum(tempAlbum);
 	this->list[size++] = aSong;
-    aSong.getTitle();
-    cout << " has been added to the library!" << endl;
+    	aSong.getTitle();
+   	cout << " has been added to the library!" << endl;
 	return;
 }
 

@@ -41,7 +41,7 @@ void charArrayInput(char input[])
 char charInput()
 {
 	char input;
-	cin >> input;
+	cin.get(input);
 	cin.ignore(MAXCHAR, '\n');
 	while(!cin)
 	{
