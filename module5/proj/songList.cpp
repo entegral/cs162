@@ -19,7 +19,7 @@ SongList::SongList()
 SongList::SongList(char fileName[])
 {
    	int capacity = CAP;
-	list = new Song[capacity];
+	list = new Song[capacity];						//	need to implement dynamic resizing of array of songs (songList)
 	size = 0;
    	char tempTitle[MAXCHAR], tempArtist[MAXCHAR], tempAlbum[MAXCHAR];
    	int tempMin, tempSec;
