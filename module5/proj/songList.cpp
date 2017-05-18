@@ -7,18 +7,26 @@
 SongList::SongList()
 {
     size = 0;
+    if (list)
+    {
+	delete [] list;
+	list = NULL;
+    }
+    
 }
 
 // constructor - read from file
 SongList::SongList(char fileName[])
 {
-    size = 0;
-    char tempTitle[MAXCHAR], tempArtist[MAXCHAR], tempAlbum[MAXCHAR];
-    int tempMin, tempSec;
-    ifstream inFile;
+   	int capacity = CAP;
+	list = new Song[capacity];
+	size = 0;
+   	char tempTitle[MAXCHAR], tempArtist[MAXCHAR], tempAlbum[MAXCHAR];
+   	int tempMin, tempSec;
+    	ifstream inFile;
 
     // open file using 'filename'
-    inFile.open(fileName);
+	inFile.open(fileName);
 	if(!inFile)
 	{
 		cout << "File did not open, exiting program" << endl;
@@ -26,7 +34,7 @@ SongList::SongList(char fileName[])
 	}
 
     // file opened, now load data from file to object
-    inFile.getline(tempTitle, MAXCHAR, ';');
+	inFile.getline(tempTitle, MAXCHAR, ';');
 	while(!inFile.eof())
 	{
 		inFile.getline(tempArtist, MAXCHAR, ';');
@@ -37,8 +45,11 @@ SongList::SongList(char fileName[])
 		inFile.getline(tempAlbum, MAXCHAR);
 
         	// populate aSong
-		list = new Song[CAP];
-		list[size++] = Song(tempTitle, tempArtist, tempMin, tempSec, tempAlbum);
+		list[size].setTitle(tempTitle);
+		list[size].setArtist(tempArtist);
+		list[size].setDurationMin(tempMin);
+		list[size].setDurationSec(tempSec);
+		list[size++].setAlbum(tempAlbum);
 		inFile.getline(tempTitle, MAXCHAR, ';');
 	}
 	inFile.close();
@@ -106,12 +117,11 @@ void SongList::addToLibrary()
 	tempDurationSec = intInput();
 	cout << "What is the name of the album? " << endl;
 	charArrayInput(tempAlbum);
-	aSong.setTitle(tempTitle);
-    	aSong.setArtist(tempArtist);
-    	aSong.setDurationMin(tempDurationMin);
-    	aSong.setDurationSec(tempDurationSec);
-    	aSong.setAlbum(tempAlbum);
-	this->list[size++] = aSong;
+	list[size].setTitle(tempTitle);
+    	list[size].setArtist(tempArtist);
+    	list[size].setDurationMin(tempDurationMin);
+    	list[size].setDurationSec(tempDurationSec);
+    	list[size++].setAlbum(tempAlbum);
     	aSong.getTitle();
    	cout << " has been added to the library!" << endl;
 	return;

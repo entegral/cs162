@@ -5,66 +5,71 @@
 Song::Song()
 {
 	title = new char[strlen("Untitled") + 1];
-	strcpy(this->title, title);
+	strcpy(title, "untitled");
 	artist = new char[strlen("No Artist")+1];
-	strcpy(this->artist, artist);
-	this->durationMin = -1;
-	this->durationSec = -1;
+	strcpy(artist, "no artist");
+	durationMin = -1;
+	durationSec = -1;
 	album = new char[strlen("No Album") + 1];
-	strcpy(this->album, album);
+	strcpy(album, "no album" );
 }
 
 Song::Song(char aTitle[], char aArtist[], int aDurationMin, int aDurationSec, char aAlbum[])
 {
-	this->title = new char[strlen(aTitle) + 1];
-	this->artist = new char[strlen(aArtist) + 1];
-	strcpy(this->title, aTitle);
-	strcpy(this->artist, aArtist);
-	this->durationMin = aDurationMin;
-	this->durationSec = aDurationSec;
-	this->album = new char[strlen(aAlbum) + 1];
-	strcpy(this->album, aAlbum);
+	title = new char[strlen(aTitle) + 1];
+	artist = new char[strlen(aArtist) + 1];
+	strcpy(title, aTitle);
+	strcpy(artist, aArtist);
+	durationMin = aDurationMin;
+	durationSec = aDurationSec;
+	album = new char[strlen(aAlbum) + 1];
+	strcpy(album, aAlbum);
 }
 
 Song::~Song()
 {
-	if(title != NULL){
+	if(title != "untitled"){
 		delete [] title;
+		title = NULL;
 	}
 
-	if(artist != NULL){
+	if(artist != "no artist"){
 		delete [] artist;
+		artist = NULL;
 	}
 
-	if(album != NULL){
+	if(album != "no album"){
 		delete [] album;
+		album = NULL;
 	}	
 }
 
 void Song::printSongInfo()
 {
-	cout << "\nTitle: " << this->title << endl;
-	cout << "Artist: " << this->artist << endl;
-	cout << "Duration: " << this->durationMin << ":" << this->durationSec << endl;
-	cout << "Album: " << this->album << endl;
+	cout << "\nTitle: " << title << endl;
+	cout << "Artist: " << artist << endl;
+	cout << "Duration: " << durationMin << ":" << durationSec << endl;
+	cout << "Album: " << album << endl;
 }
 
 void Song::setTitle(char aTitle[])
 {	
-	if(this->title != NULL){
-		delete [] this->title;
+	if(title != NULL){
+		delete [] title;
+		title = NULL;
 	}
-	this->title = new char[strlen(aTitle) + 1];
-	strcpy(this->title, aTitle);
+	title = new char[strlen(aTitle) + 1];
+	strcpy(title, aTitle);
 }
 
 void Song::setArtist(char aArtist[])
 {
-	if(this->artist != NULL){
-		delete [] this->artist;
+	if(artist != NULL){
+		delete [] artist;
+		artist = NULL;
 	}
-	this->artist = new char[strlen(aArtist) + 1];
-	strcpy(this->artist, aArtist);
+	artist = new char[strlen(aArtist) + 1];
+	strcpy(artist, aArtist);
 }
 
 void Song::setDurationMin(int aDurationMin)
@@ -79,42 +84,43 @@ void Song::setDurationSec(int aDurationSec)
 
 void Song::setAlbum(char aAlbum[])
 {
-	if(this->album != NULL){
-		delete [] this->album;
+	if(album != NULL){
+		delete [] album;
+		album = NULL;
 	}
-	this->album = new char[strlen(aAlbum) + 1];
-	strcpy(this->album, aAlbum);
+	album = new char[strlen(aAlbum) + 1];
+	strcpy(album, aAlbum);
 }
 
 //prints formatted song for writing to file
 void Song::writeSong(ofstream &outFile)
 {
-	outFile << this->title << ';' << this->artist << ';' << durationMin << ';' << durationSec << ';' << this->album << endl;
+	outFile << title << ';' << artist << ';' << durationMin << ';' << durationSec << ';' << album << endl;
 }
 
 void Song::getTitle()
 {
-	cout << "Title: " << this->title << endl;
+	cout << "Title: " << title << endl;
 }
 
 void Song::getArtist()
 {
-	cout << "Artist: " << this->artist << endl;
+	cout << "Artist: " << artist << endl;
 }
 
 void Song::getDuration()
 {
-		cout << "Duration: " << this->durationMin << ":" << this->durationSec << endl;
+		cout << "Duration: " << durationMin << ":" << durationSec << endl;
 }
 
 void Song::getAlbum()
 {
-	cout << "Album: " << this->album << endl;
+	cout << "Album: " << album << endl;
 }
 
 bool Song::compareArtist(char searchQuery[])
 {
-	if (strstr(this->artist, searchQuery) != NULL)
+	if (strstr(artist, searchQuery) != NULL)
 	{
 		return true;
 	}
@@ -126,7 +132,7 @@ bool Song::compareArtist(char searchQuery[])
 
 bool Song::compareAlbum(char searchQuery[])
 {
-	if (strstr(this->album, searchQuery) != NULL)
+	if (strstr(album, searchQuery) != NULL)
         {
                 return true;
         }
