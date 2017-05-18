@@ -4,13 +4,13 @@
 // function definitions
 Song::Song()
 {
-	title = new char[strlen("Untitled") + 1];
+	title = new char[strlen("untitled") + 1];
 	strcpy(title, "untitled");
-	artist = new char[strlen("No Artist")+1];
+	artist = new char[strlen("no artist")+1];
 	strcpy(artist, "no artist");
 	durationMin = -1;
 	durationSec = -1;
-	album = new char[strlen("No Album") + 1];
+	album = new char[strlen("no album") + 1];
 	strcpy(album, "no album" );
 }
 
