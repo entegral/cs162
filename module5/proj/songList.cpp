@@ -198,7 +198,7 @@ void SongList::writeData(char fileName[])
 	}
 
 	for (int i = 0; i < size; i++){
-		outFile << list[i]
+		list[i].writeSong(outFile);
 	}
 	outFile.close();
 	return;
