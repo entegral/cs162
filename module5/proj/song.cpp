@@ -156,8 +156,8 @@ const Song& Song::operator=(const Song& aSong)
 	return *this;
 }
 
-ostream& Song::operator<< (ostream& os, const Song& aSong)
-{
-	os << aSong.title << ';' << aSong.artist << ';' << aSong.durationMin << ';' << aSong.durationSec << ';' << aSong.album << endl;
-	return os;
-}
+//ostream& Song::operator<< (ostream& os, const Song& aSong)
+//{
+//	os << aSong.title << ';' << aSong.artist << ';' << aSong.durationMin << ';' << aSong.durationSec << ';' << aSong.album << endl;
+//	return os;
+//}
