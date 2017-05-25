@@ -1,14 +1,10 @@
 //put your implementation of LinkedList class here
-#include "list.cpp"
+#include "list.h"
 
-LinkdedList::LinkedList()
+LinkedList::LinkedList()
 {
-	Node *newNode = new Node;
-	newNode->data = '\0';
-	newNode->next = NULL;
-	newNode->prev = NULL;
-	head = newNode;
-	tail = newNode;
+	head = NULL;
+	tail = NULL;
 }
 
 bool LinkedList::add(int val)
@@ -18,34 +14,58 @@ bool LinkedList::add(int val)
 	if (!head) {
 		head = newNode;
 		tail = newNode;
-		next = NULL;
-		prev = head;
+		newNode->next = NULL;
+		newNode->prev = NULL;
 		return true;
 	}
 	else {
 		newNode->next = head;
-		newNode->prev = &head;
+		head->prev = newNode;
+		newNode->prev = NULL;
 		head = newNode;
 		return true;
 	}
 }
 
-void printAscending(){
-	Node *curr;
-	curr = head;
-	for (curr, curr, curr = curr->next){
-		cout << curr->data << endl;
+void LinkedList::printAscending() const{
+	Node *curr = new Node;
+	cout << endl;
+	for (curr = tail; curr; curr = curr->prev){
+		cout << curr->data << " ";
 	}
+	cout << endl;
+	delete curr;
 }
 
-//bool LinkedList::remove(int val)
-//{
-//	Node *curr;
-//	curr = head;
-//	while(curr)
-//	{
-//		for (curr, curr != NULL, curr = curr->next){
-//			
-//		}
-//	}
-//}
+void LinkedList::printDescending() const{
+	Node *curr = new Node;
+	cout << endl;
+	for (curr = head; curr; curr = curr->next){
+		cout << curr->data << " ";
+	}
+	cout << endl;
+	delete curr;
+}
+
+
+bool LinkedList::remove(int val)
+{
+	Node *curr, *previous;
+	previous = NULL;
+	for (curr = head; curr; curr = curr->next){
+		if (curr->data == val){
+			curr->data = '\0';
+			
+			previous->next = curr->next;
+			delete curr;
+			delete previous;
+			return true;
+		}
+		else {
+			previous = curr;
+		}	
+	}
+	delete curr;
+	delete previous;
+	return false;
+}
