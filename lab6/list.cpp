@@ -50,22 +50,30 @@ void LinkedList::printDescending() const{
 
 bool LinkedList::remove(int val)
 {
-	Node *curr, *previous;
+	Node *current, *previous;
+	current = head;
 	previous = NULL;
-	for (curr = head; curr; curr = curr->next){
-		if (curr->data == val){
-			curr->data = '\0';
-			
-			previous->next = curr->next;
-			delete curr;
-			delete previous;
-			return true;
-		}
-		else {
-			previous = curr;
-		}	
+	while (current && (current->data != val)){
+		previous = current;
+		current = current->next;
 	}
-	delete curr;
-	delete previous;
+	if (current == tail){
+		tail = previous;
+		previous->next = NULL;
+		delete current;
+		return true;
+	}
+	else if (current == head){
+		head = current->next;
+		current->next->prev = NULL;
+		delete current;
+		return true;
+	}
+	else {
+		previous->next = current->next;
+		current->next->prev = previous;
+		delete current;
+		return true;
+	}
 	return false;
 }
