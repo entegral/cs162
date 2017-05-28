@@ -40,6 +40,8 @@ SongList::SongList(char fileName[])
             lineCount++;
         }
     list = new Song[lineCount + 1];	                              //  Dynamic list size allocation implementation
+    inFile.close();
+    inFile.open(fileName);
 
     // file opened, now load data from file to object
 	inFile.getline(tempTitle, MAXCHAR, ';');
