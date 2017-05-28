@@ -1,0 +1,28 @@
+
+bool LinkedList::add(int val)
+{
+        Node *newNode = new Node;
+        newNode->data = val;
+        if (!head) {
+                head = newNode;
+                tail = newNode;
+                newNode->next = NULL;
+                newNode->prev = NULL;
+                return true;
+        }
+        else {  
+                newNode->next = head;
+                head->prev = newNode;
+                newNode->prev = NULL;
+                head = newNode;
+                return true;
+        }
+}
+
+3 10 1 7 9 12 
+
+12 9 7 1 10 3 
+
+10 9 
+
+9 10 
