@@ -19,10 +19,9 @@ SongList::SongList()
 SongList::SongList(char fileName[])
 {
    	int capacity = CAP;
-	list = new Song[capacity];						//	need to implement dynamic resizing of array of songs (songList)
 	size = 0;
-   	char tempTitle[MAXCHAR], tempArtist[MAXCHAR], tempAlbum[MAXCHAR];
-   	int tempMin, tempSec;
+   	char tempTitle[MAXCHAR], tempArtist[MAXCHAR], tempAlbum[MAXCHAR], tempLineCount[MAXCHAR];
+   	int tempMin, tempSec, lineCount;
     	ifstream inFile;
 
     // open file using 'filename'
@@ -32,6 +31,15 @@ SongList::SongList(char fileName[])
 		cout << "File did not open, exiting program" << endl;
 		exit(0);
 	}
+
+    // determine length of file to be read
+    lineCount = 0;
+    while (!inFile.eof())
+        {
+            inFile.getline(tempLineCount, MAXCHAR);
+            lineCount++;
+        }
+    list = new Song[lineCount + 1];	                              //  Dynamic list size allocation implementation
 
     // file opened, now load data from file to object
 	inFile.getline(tempTitle, MAXCHAR, ';');
