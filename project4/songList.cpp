@@ -39,7 +39,7 @@ SongList::SongList(char fileName[])
             inFile.getline(tempLineCount, MAXCHAR);
             lineCount++;
         }
-    list = new Song[lineCount + 1];	                              //  Dynamic list size allocation implementation
+    list = new Song[lineCount * 2];	                              //  Dynamic list size allocation implementation
     inFile.close();
     inFile.open(fileName);
 
@@ -117,6 +117,8 @@ void SongList::addToLibrary()
     int tempDurationMin;
     int tempDurationSec;
     char tempAlbum[MAXCHAR];
+
+
 	cout << "What is the title of the song you would like to add? " << endl;
 	charArrayInput(tempTitle);
 	cout << "Who made this song? " << endl;
