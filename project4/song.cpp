@@ -6,12 +6,12 @@ Song::Song()
 {
 	title = new char[strlen("untitled") + 1];
 	strcpy(title, "untitled");
-	artist = new char[strlen("no artist")+1];
-	strcpy(artist, "no artist");
+	artist = new char[strlen("noArtist")+1];
+	strcpy(artist, "noArtist");
 	durationMin = -1;
 	durationSec = -1;
-	album = new char[strlen("no album") + 1];
-	strcpy(album, "no album" );
+	album = new char[strlen("noAlbum") + 1];
+	strcpy(album, "noAlbum" );
 }
 
 Song::Song(char aTitle[], char aArtist[], int aDurationMin, int aDurationSec, char aAlbum[])
@@ -28,17 +28,25 @@ Song::Song(char aTitle[], char aArtist[], int aDurationMin, int aDurationSec, ch
 
 Song::~Song()
 {
-	if(strcmp(title, "untitled") != 0){
+
+	char atitle[MAXCHAR];
+	char aartist[MAXCHAR];
+	char aalbum[MAXCHAR];
+	strcpy(atitle, "untitled");
+	strcpy(aartist, "noArtist");
+	strcpy(aalbum, "noAlbum");
+
+	if(strcmp(title, atitle) != 0){
 		delete [] title;
 		title = NULL;
 	}
 
-	if(strcmp(artist, "no artist") != 0){
+	if(strcmp(artist, aartist) != 0){
 		delete [] artist;
 		artist = NULL;
 	}
 
-	if(strcmp(album, "no album") != 0){
+	if(strcmp(album, aalbum) != 0){
 		delete [] album;
 		album = NULL;
 	}
