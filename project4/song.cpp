@@ -28,17 +28,17 @@ Song::Song(char aTitle[], char aArtist[], int aDurationMin, int aDurationSec, ch
 
 Song::~Song()
 {
-	if(title != "untitled"){
+	if(strcmp(title, "untitled") != 0){
 		delete [] title;
 		title = NULL;
 	}
 
-	if(artist != "no artist"){
+	if(strcmp(artist, "no artist") != 0){
 		delete [] artist;
 		artist = NULL;
 	}
 
-	if(album != "no album"){
+	if(strcmp(album, "no album") != 0){
 		delete [] album;
 		album = NULL;
 	}

@@ -130,11 +130,11 @@ void SongList::addToLibrary()
 	cout << "What is the name of the album? " << endl;
 	charArrayInput(tempAlbum);
 	list[size].setTitle(tempTitle);
-    	list[size].setArtist(tempArtist);
-    	list[size].setDurationMin(tempDurationMin);
-    	list[size].setDurationSec(tempDurationSec);
-    	list[size++].setAlbum(tempAlbum);
-    cout << aSong.getTitle();
+    list[size].setArtist(tempArtist);
+    list[size].setDurationMin(tempDurationMin);
+    list[size].setDurationSec(tempDurationSec);
+    list[size++].setAlbum(tempAlbum);
+    list[size - 1].getTitle();
    	cout << " has been added to the library!" << endl;
 	return;
 }
