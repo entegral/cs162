@@ -134,7 +134,7 @@ void SongList::addToLibrary()
     	list[size].setDurationMin(tempDurationMin);
     	list[size].setDurationSec(tempDurationSec);
     	list[size++].setAlbum(tempAlbum);
-    	aSong.getTitle();
+    cout << aSong.getTitle();
    	cout << " has been added to the library!" << endl;
 	return;
 }
