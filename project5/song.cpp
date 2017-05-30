@@ -118,7 +118,7 @@ void Song::getArtist()
 
 void Song::getDuration()
 {
-		cout << "Duration: " << durationMin << ":" << durationSec << endl;
+	cout << "Duration: " << durationMin << ":" << durationSec << endl;
 }
 
 void Song::getAlbum()
@@ -156,11 +156,11 @@ const Song& Song::operator=(const Song& aSong)
 	{
 		return *this;
 	}
-	strncpy(title, aSong.title, strlen(aSong.title) + 1);				// stringcopy
-	strncpy(artist, aSong.artist, strlen(aSong.artist) + 1);
+	strcpy(title,aSong.title);				// stringcopy
+	strcpy(artist,aSong.artist);
 	durationMin = aSong.durationMin;
 	durationSec = aSong.durationSec;
-	strncpy(album, aSong.album, strlen(aSong.album) + 1);
+	strcpy(album,aSong.album);
 	return *this;
 }
 
