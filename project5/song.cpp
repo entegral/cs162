@@ -6,7 +6,7 @@ Song::Song()
 {
 	title = new char[strlen("untitled") + 1];
 	strcpy(title, "untitled");
-	artist = new char[strlen("noArtist")+1];
+	artist = new char[strlen("noArtist") + 1];
 	strcpy(artist, "noArtist");
 	durationMin = -1;
 	durationSec = -1;

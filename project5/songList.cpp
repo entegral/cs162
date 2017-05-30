@@ -111,28 +111,30 @@ void SongList::displayLibrary(Song result[], int size)
 // UPDATED FOR CLASSES
 void SongList::addToLibrary()
 {
-    char tempTitle[MAXCHAR];
-    char tempArtist[MAXCHAR];
-    int tempDurationMin;
-    int tempDurationSec;
-    char tempAlbum[MAXCHAR];
-
+    char tempTitle[MAXCHAR], tempArtist[MAXCHAR], tempDurationMin, tempDurationSec, tempAlbum[MAXCHAR];
+    char *aTitle, *aArtist, *aAlbum;
 
 	cout << "What is the title of the song you would like to add? " << endl;
 	charArrayInput(tempTitle);
+    aTitle = new char[strlen(tempTitle) + 1];
+    strcpy(aTitle, tempTitle);
 	cout << "Who made this song? " << endl;
 	charArrayInput(tempArtist);
+    aArtist = new char[strlen(tempArtist) + 1];
+    strcpy(aArtist, tempArtist);
 	cout << "How many minuets is this song? (don't include seconds yet!) " << endl;
 	tempDurationMin = intInput();
 	cout << "How many seconds remain? " << endl;
 	tempDurationSec = intInput();
 	cout << "What is the name of the album? " << endl;
 	charArrayInput(tempAlbum);
-	list[size].setTitle(tempTitle);
-    list[size].setArtist(tempArtist);
+    aAlbum = new char[strlen(tempAlbum) + 1];
+    strcpy(aAlbum, tempAlbum);
+	list[size].setTitle(aTitle);
+    list[size].setArtist(aArtist);
     list[size].setDurationMin(tempDurationMin);
     list[size].setDurationSec(tempDurationSec);
-    list[size++].setAlbum(tempAlbum);
+    list[size++].setAlbum(aAlbum);
     list[size - 1].getTitle();
    	cout << " has been added to the library!" << endl;
 	return;
