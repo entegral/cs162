@@ -111,7 +111,6 @@ void SongList::displayLibrary(Song result[], int size)
 // UPDATED FOR CLASSES
 void SongList::addToLibrary()
 {
-    Song aSong;
     char tempTitle[MAXCHAR];
     char tempArtist[MAXCHAR];
     int tempDurationMin;

@@ -36,17 +36,17 @@ Song::~Song()
 	strcpy(aartist, "noArtist");
 	strcpy(aalbum, "noAlbum");
 
-	if(strcmp(title, atitle) != 0){
+	if(strstr(title, atitle) != 0){
 		delete [] title;
 		title = NULL;
 	}
 
-	if(strcmp(artist, aartist) != 0){
+	if(strstr(artist, aartist) != 0){
 		delete [] artist;
 		artist = NULL;
 	}
 
-	if(strcmp(album, aalbum) != 0){
+	if(strstr(album, aalbum) != 0){
 		delete [] album;
 		album = NULL;
 	}
