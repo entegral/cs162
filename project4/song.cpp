@@ -29,24 +29,17 @@ Song::Song(char aTitle[], char aArtist[], int aDurationMin, int aDurationSec, ch
 Song::~Song()
 {
 
-	char atitle[MAXCHAR];
-	char aartist[MAXCHAR];
-	char aalbum[MAXCHAR];
-	strcpy(atitle, "untitled");
-	strcpy(aartist, "noArtist");
-	strcpy(aalbum, "noAlbum");
-
-	if(strcmp(title, atitle) != 0){
+	if(title){
 		delete [] title;
 		title = NULL;
 	}
 
-	if(strcmp(artist, aartist) != 0){
+	if(artist){
 		delete [] artist;
 		artist = NULL;
 	}
 
-	if(strcmp(album, aalbum) != 0){
+	if(album){
 		delete [] album;
 		album = NULL;
 	}
