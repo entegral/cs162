@@ -156,11 +156,11 @@ const Song& Song::operator=(const Song& aSong)
 	{
 		return *this;
 	}
-	strcpy(title,aSong.title);				// stringcopy
-	strcpy(artist,aSong.artist);
+	strncpy(title, aSong.title, strlen(aSong.title) + 1);				// stringcopy
+	strncpy(artist, aSong.artist, strlen(aSong.artist) + 1);
 	durationMin = aSong.durationMin;
 	durationSec = aSong.durationSec;
-	strcpy(album,aSong.album);
+	strncpy(album, aSong.album, strlen(aSong.album) + 1);
 	return *this;
 }
 
