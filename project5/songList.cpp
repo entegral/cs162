@@ -8,7 +8,6 @@ SongList::SongList()
 {
     size = 0;
 	Node *newNode = new Node;
-    newNode->data = new Song;
     newNode->next = NULL;
     newNode->prev = NULL;
     }
