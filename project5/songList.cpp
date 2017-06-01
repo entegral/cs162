@@ -95,12 +95,16 @@ SongList::~SongList()
 void SongList::addNode(Node *newNode)
 {
     char *nnString, *headString, *tailString = new char[40];
+    bool headStringActive = false;
+    bool tailStringActive = false;
     newNode->data.getTitle(nnString);
     if (head){
         head->data.getTitle(headString);
+        headStringActive = true;
     }
     if (tail){
         tail->data.getTitle(tailString);
+        tailStringActive = true;
     }
     // if head doesnt exist, assume list is not started and set newNode as single node in list
     if (!head)
@@ -156,10 +160,10 @@ void SongList::addNode(Node *newNode)
         delete previous;
         delete [] currString;
     }
-    if (headString){
+    if (headStringActive){
         delete [] headString;
     }
-    if (tailString){
+    if (tailStringActive){
         delete [] tailString;
     }
     delete [] nnString;
