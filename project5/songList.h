@@ -8,8 +8,12 @@
 class SongList
 {
 	private:
-		Song* list;
+		struct Node {
+			Song data;
+			Node *next, *prev;
+		}
 		int size;
+		Node *head, *tail;
 
 	public:
 		// constructors
@@ -18,7 +22,7 @@ class SongList
 		// destructors
 		~SongList();
 
-	        void addToLibrary();
+        void addToLibrary();
 		void displayLibrary();
 		void displayLibrary(Song [], int);
 		void removeFromLibrary();

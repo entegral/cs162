@@ -7,22 +7,22 @@
 SongList::SongList()
 {
     size = 0;
-    if (list)
-    {
-	delete [] list;
-	list = NULL;
+	Node newNode = new Node;
+    newNode->data = new Song;
+    newNode->next = NULL;
+    newNode->prev = NULL;
     }
-
 }
 
 // constructor - read from file
 SongList::SongList(char fileName[])
 {
-   	int capacity = CAP;
-	size = 0;
    	char tempTitle[MAXCHAR], tempArtist[MAXCHAR], tempAlbum[MAXCHAR], tempLineCount[MAXCHAR];
    	int tempMin, tempSec, lineCount;
-    	ifstream inFile;
+    ifstream inFile;
+	size = 0;
+    head = NULL;
+    tail = NULL;
 
     // open file using 'filename'
 	inFile.open(fileName);
@@ -39,7 +39,7 @@ SongList::SongList(char fileName[])
             inFile.getline(tempLineCount, MAXCHAR);
             lineCount++;
         }
-    list = new Song[lineCount * 2];	                              //  Dynamic list size allocation implementation
+
     inFile.close();
     inFile.open(fileName);
 
@@ -47,20 +47,62 @@ SongList::SongList(char fileName[])
 	inFile.getline(tempTitle, MAXCHAR, ';');
 	while(!inFile.eof())
 	{
-		inFile.getline(tempArtist, MAXCHAR, ';');
+        // acquire song info in tmep variables
+        inFile.getline(tempArtist, MAXCHAR, ';');
 		inFile >> tempMin;
 		inFile.ignore(100, ';');
 		inFile >> tempSec;
 		inFile.ignore(100, ';');
 		inFile.getline(tempAlbum, MAXCHAR);
 
-        	// populate aSong
-		list[size].setTitle(tempTitle);
-		list[size].setArtist(tempArtist);
-		list[size].setDurationMin(tempMin);
-		list[size].setDurationSec(tempSec);
-		list[size++].setAlbum(tempAlbum);
+        // Allocate mem for newNode and set newNode's Song data
+        Node *newNode = new Node;
+        Node *current, *previous;
+		newNode->data.setTitle(tempTitle);
+		newNode->data.setArtist(tempArtist);
+		newNode->data.setDurationMin(tempMin);
+		newNode->data.setDurationSec(tempSec);
+		newNode->data.setAlbum(tempAlbum);
+        size++;
 		inFile.getline(tempTitle, MAXCHAR, ';');
+
+        // now add newNode to the existing (or not existing) linked List of songs at correct spot
+        if (!head)
+        {
+            head = newNode;
+            tail = newNode;                 // if head doesnt exist, assume list is not started and set newNode as single node in list
+            newNode->next = NULL;
+            newNode->prev = NULL;
+        }
+        else if (strcmp(newNode->data.getTitle(), head->data.getTitle()) < 0)
+        {
+            newNode->next = head;
+            newNode->prev = NULL;           // if head does exist AND newNode's title < head's title, insert at beginning
+            head->prev = newNode;
+            head = newNode;
+        }
+        else if (strcmp(newNode->data.getTitle(), tail->data.getTitle()) > 0)
+        {
+            newNode->next = NULL;
+            newNode->prev = previous;       // if newNode's title is bigger than tail's title, add it to the end of the list
+            previous->next = newNode;
+        }
+        else
+        {
+            current = head;                                     // Lastly, if newNode does not belong at beginning, loop until correct spot then insert
+            for (current; current; current = current->next)
+            {
+                if (strcmp(newNode->data.getTitle(), current->data.getTitle()) < 0)
+                {
+                    previous = current;                      // sets current to the spot that newNode should be inserted before
+                    current = current->next;
+                }
+            }
+            newNode->next = current;                            //  current and previous are set, now insert at location
+            newNode->prev = current->prev;
+            current->prev = newNode;
+            previous->next = newNode;
+        }
 	}
 	inFile.close();
 }
@@ -154,9 +196,9 @@ void SongList::removeFromLibrary()
             }
             size--;
     }
-    toRemove.getTitle();
-	cout << " by " << endl;
-    toRemove.getArtist();
+    cout << toRemove.getTitle();
+	cout << " by ";
+    cout << toRemove.getArtist();
     cout <<  " was removed from the library!" << endl;
 	return;
 }

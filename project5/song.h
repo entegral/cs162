@@ -34,15 +34,12 @@ class Song
 
 		// accessor functions
 		void printSongInfo();
-		void getTitle();
-		void getArtist();
+		char getTitle();
+		char getArtist();
 		void getDuration();
-		void getAlbum();
+		char getAlbum();
 		bool compareArtist(char []);
 		bool compareAlbum(char []);
-		char pullTitle();
-		char pullArtist();
-		char pullAlbum();
 
 		// mutator functions
 		void setTitle(char []);
