@@ -156,8 +156,12 @@ void SongList::addNode(Node *newNode)
         delete previous;
         delete [] currString;
     }
-    delete [] headString;
-    delete [] tailString;
+    if (headString){
+        delete [] headString;
+    }
+    if (tailString){
+        delete [] tailString;
+    }
     delete [] nnString;
 }
 
