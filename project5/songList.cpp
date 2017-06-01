@@ -96,10 +96,10 @@ void SongList::addNode(Node *newNode)
     char *nnString, *headString, *tailString = new char[40];
     strcmp(newNode->data.getTitle(nnString);
     if (head){
-        head->data.getTitle(headString)
+        head->data.getTitle(headString);
     }
     if (tail){
-        tail->data.getTitle(tailString)
+        tail->data.getTitle(tailString);
     }
     // if head doesnt exist, assume list is not started and set newNode as single node in list
     if (!head)
