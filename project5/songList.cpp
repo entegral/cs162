@@ -116,8 +116,8 @@ void SongList::addNode(Node *newNode)
     else if (strcmp(newNode->data.getTitle(cmpr1), tail->data.getTitle(cmpr2)) > 0)
     {
         newNode->next = NULL;
-        newNode->prev = previous;
-        previous->next = newNode;
+        newNode->prev = tail;
+        tail->prev->next = newNode;
         tail = newNode;
     }
 
@@ -131,7 +131,7 @@ void SongList::addNode(Node *newNode)
         // this loop sets current so that newNode can be inserted before it
         for (current; current; current = current->next)
         {
-            if (strcmp(newNode->data.getTitle(), current->data.getTitle()) < 0)
+            if (strcmp(newNode->data.getTitle(cmpr1), current->data.getTitle(cmpr2)) < 0)
             {
                 previous = current;
                 current = current->next;
