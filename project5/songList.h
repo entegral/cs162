@@ -22,7 +22,7 @@ class SongList
 		// destructors
 		~SongList();
 
-		void addNode(Node &);
+		void addNode(Node *);
         void addToLibrary();
 		void displayLibrary();
 		void displayLibrary(Song [], int);

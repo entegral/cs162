@@ -91,7 +91,7 @@ SongList::~SongList()
 	}
 }
 
-void SongList::addNode(Node &newNode)
+void SongList::addNode(Node newNode)
 {
     char *cmpr1, *cmpr2 = new char[40]
     // if head doesnt exist, assume list is not started and set newNode as single node in list
