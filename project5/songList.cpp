@@ -94,7 +94,7 @@ SongList::~SongList()
 void SongList::addNode(Node *newNode)
 {
     char *nnString, *headString, *tailString = new char[40];
-    strcmp(newNode->data.getTitle(nnString);
+    newNode->data.getTitle(nnString);
     if (head){
         head->data.getTitle(headString);
     }
