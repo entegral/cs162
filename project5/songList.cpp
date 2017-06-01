@@ -95,6 +95,7 @@ SongList::~SongList()
 
 void SongList::addNode(Node &newNode)
 {
+    char *cmpr1, *cmpr2 = new char[40]
     // if head doesnt exist, assume list is not started and set newNode as single node in list
     if (!head)
     {
@@ -105,7 +106,7 @@ void SongList::addNode(Node &newNode)
     }
 
     // if head does exist AND newNode's title < head's title, insert at beginning
-    else if (strcmp(newNode->data.getTitle(), head->data.getTitle()) < 0)
+    else if (strcmp(newNode->data.getTitle(cmpr1), head->data.getTitle(cmpr2)) < 0)
     {
         newNode->next = head;
         newNode->prev = NULL;
@@ -114,7 +115,7 @@ void SongList::addNode(Node &newNode)
     }
 
     // if newNode's title is bigger than tail's title, add it to the end of the list
-    else if (strcmp(newNode->data.getTitle(), tail->data.getTitle()) > 0)
+    else if (strcmp(newNode->data.getTitle(cmpr1), tail->data.getTitle(cmpr2)) > 0)
     {
         newNode->next = NULL;
         newNode->prev = previous;
@@ -144,7 +145,11 @@ void SongList::addNode(Node &newNode)
         newNode->prev = current->prev;
         current->prev = newNode;
         previous->next = newNode;
+        delete current;
+        delete previous;
     }
+    delete cmpr1;
+    delete cmpr2;
 }
 
 // function to display all currently loaded song data

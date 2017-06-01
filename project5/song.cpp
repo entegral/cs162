@@ -106,14 +106,18 @@ void Song::writeSong(ofstream &outFile)
 	outFile << title << ';' << artist << ';' << durationMin << ';' << durationSec << ';' << album << endl;
 }
 
-char Song::getTitle()
+char Song::getTitle(char *temp)
 {
-	return title;
+	for (int i = 0; i <= strlen(temp); i++){
+		temp[i] = title[i];
+	}
 }
 
-char Song::getArtist()
+char Song::getArtist(char *temp)
 {
-	return artist;
+	for (int i = 0; i <= strlen(temp); i++){
+		temp[i] = artist[i];
+	}
 }
 
 void Song::getDuration()
@@ -121,9 +125,11 @@ void Song::getDuration()
 	cout << "Duration: " << durationMin << ":" << durationSec << endl;
 }
 
-char Song::getAlbum()
+char Song::getAlbum(char *temp)
 {
-	return album;
+	for (int i = 0; i <= strlen(temp); i++){
+		temp[i] = album[i];
+	}
 }
 
 bool Song::compareArtist(char searchQuery[])
