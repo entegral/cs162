@@ -10,7 +10,6 @@ SongList::SongList()
 	Node *newNode = new Node;
     newNode->next = NULL;
     newNode->prev = NULL;
-    }
 }
 
 // constructor - read from file
