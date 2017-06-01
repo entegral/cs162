@@ -131,7 +131,8 @@ void SongList::addNode(Node *newNode)
     // Lastly, if newNode does not belong at beginning, loop until correct spot then insert
     else
     {
-        Node *current, *previous, *currString;
+        Node *current, *previous;
+        char *currString = new char[40];
         current = head;
         previous = NULL;
         current->data.getTitle(currString);
