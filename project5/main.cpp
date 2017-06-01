@@ -25,7 +25,7 @@ int main()
 			case 'd':										// DONE - song.cpp
 				songs.displayLibrary();				//
 				break;										//
-			case 'a':
+/*			case 'a':
 				songs.addToLibrary();					// DONE - song.cpp
 				 break;										//
 			case 'r':
@@ -39,7 +39,7 @@ int main()
 				songs.writeData(fileName);				// DONE - database.cpp
 				loopControl = quitProgram();				// DONE - main.cpp
 				break;
-			default:
+		*/	default:
 				cout << "Invalid selection!" << endl;		//	menu input error handling
 				break;
 		}
