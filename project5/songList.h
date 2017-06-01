@@ -11,7 +11,7 @@ class SongList
 		struct Node {
 			Song data;
 			Node *next, *prev;
-		}
+		};
 		int size;
 		Node *head, *tail;
 
