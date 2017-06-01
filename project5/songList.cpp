@@ -57,52 +57,16 @@ SongList::SongList(char fileName[])
 
         // Allocate mem for newNode and set newNode's Song data
         Node *newNode = new Node;
-        Node *current, *previous;
 		newNode->data.setTitle(tempTitle);
 		newNode->data.setArtist(tempArtist);
 		newNode->data.setDurationMin(tempMin);
 		newNode->data.setDurationSec(tempSec);
 		newNode->data.setAlbum(tempAlbum);
-        size++;
 		inFile.getline(tempTitle, MAXCHAR, ';');
 
         // now add newNode to the existing (or not existing) linked List of songs at correct spot
-        if (!head)
-        {
-            head = newNode;
-            tail = newNode;                 // if head doesnt exist, assume list is not started and set newNode as single node in list
-            newNode->next = NULL;
-            newNode->prev = NULL;
-        }
-        else if (strcmp(newNode->data.getTitle(), head->data.getTitle()) < 0)
-        {
-            newNode->next = head;
-            newNode->prev = NULL;           // if head does exist AND newNode's title < head's title, insert at beginning
-            head->prev = newNode;
-            head = newNode;
-        }
-        else if (strcmp(newNode->data.getTitle(), tail->data.getTitle()) > 0)
-        {
-            newNode->next = NULL;
-            newNode->prev = previous;       // if newNode's title is bigger than tail's title, add it to the end of the list
-            previous->next = newNode;
-        }
-        else
-        {
-            current = head;                                     // Lastly, if newNode does not belong at beginning, loop until correct spot then insert
-            for (current; current; current = current->next)
-            {
-                if (strcmp(newNode->data.getTitle(), current->data.getTitle()) < 0)
-                {
-                    previous = current;                      // sets current to the spot that newNode should be inserted before
-                    current = current->next;
-                }
-            }
-            newNode->next = current;                            //  current and previous are set, now insert at location
-            newNode->prev = current->prev;
-            current->prev = newNode;
-            previous->next = newNode;
-        }
+        addNode(newNode);
+        size++;
 	}
 	inFile.close();
 }
@@ -110,13 +74,78 @@ SongList::SongList(char fileName[])
 // destructors
 SongList::~SongList()
 {
-    // nothing to do
-	if (list != NULL){
-		delete [] list;
+    // need to iterate through linked list and set each pointer to NULL, then delete each Node
+	if (head){
+		Node *current = head;
+        Node *spare;
+        while (current->next)
+        {
+            spare = current;
+            current->prev = NULL;
+            current->next = NULL;
+            current = spare->next;
+        }
+        current->next = NULL;
+        current->prev = NULL;
+        delete current;
+        delete head;
+        delete tail;
 	}
 }
 
+void SongList::addNode(Node &newNode)
+{
+    // if head doesnt exist, assume list is not started and set newNode as single node in list
+    if (!head)
+    {
+        head = newNode;
+        tail = newNode;
+        newNode->next = NULL;
+        newNode->prev = NULL;
+    }
 
+    // if head does exist AND newNode's title < head's title, insert at beginning
+    else if (strcmp(newNode->data.getTitle(), head->data.getTitle()) < 0)
+    {
+        newNode->next = head;
+        newNode->prev = NULL;
+        head->prev = newNode;
+        head = newNode;
+    }
+
+    // if newNode's title is bigger than tail's title, add it to the end of the list
+    else if (strcmp(newNode->data.getTitle(), tail->data.getTitle()) > 0)
+    {
+        newNode->next = NULL;
+        newNode->prev = previous;
+        previous->next = newNode;
+        tail = newNode;
+    }
+
+    // Lastly, if newNode does not belong at beginning, loop until correct spot then insert
+    else
+    {
+        Node *current, *previous;
+        current = head;
+        previous = NULL;
+
+        // this loop sets current so that newNode can be inserted before it
+        for (current; current; current = current->next)
+        {
+            if (strcmp(newNode->data.getTitle(), current->data.getTitle()) < 0)
+            {
+                previous = current;
+                current = current->next;
+            }
+        }
+
+        //  current and previous are set, now insert at location
+        newNode->next = current;
+        newNode->prev = current->prev;
+        current->prev = newNode;
+        previous->next = newNode;
+    }
+}
 
 // function to display all currently loaded song data
 // UPDATED FOR CLASSES
