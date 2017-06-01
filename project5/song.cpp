@@ -108,7 +108,7 @@ void Song::writeSong(ofstream &outFile)
 
 void Song::getTitle(char *temp)
 {
-	for (int i = 0; i <= strlen(temp); i++){
+	for (int i = 0; i <= strlen(title); i++){
 		temp[i] = title[i];
 	}
 }
