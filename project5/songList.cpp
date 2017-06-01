@@ -93,7 +93,14 @@ SongList::~SongList()
 
 void SongList::addNode(Node *newNode)
 {
-    char *cmpr1, *cmpr2 = new char[40];
+    char *nnString, *headString, *tailString = new char[40];
+    strcmp(newNode->data.getTitle(nnString);
+    if (head){
+        head->data.getTitle(headString)
+    }
+    if (tail){
+        tail->data.getTitle(tailString)
+    }
     // if head doesnt exist, assume list is not started and set newNode as single node in list
     if (!head)
     {
@@ -104,7 +111,7 @@ void SongList::addNode(Node *newNode)
     }
 
     // if head does exist AND newNode's title < head's title, insert at beginning
-    else if (strcmp(newNode->data.getTitle(cmpr1), head->data.getTitle(cmpr2)) < 0)
+    else if (strcmp(nnString, headString) < 0)
     {
         newNode->next = head;
         newNode->prev = NULL;
@@ -113,7 +120,7 @@ void SongList::addNode(Node *newNode)
     }
 
     // if newNode's title is bigger than tail's title, add it to the end of the list
-    else if (strcmp(newNode->data.getTitle(cmpr1), tail->data.getTitle(cmpr2)) > 0)
+    else if (strcmp(nnString, tailString) > 0)
     {
         newNode->next = NULL;
         newNode->prev = tail;
@@ -124,14 +131,14 @@ void SongList::addNode(Node *newNode)
     // Lastly, if newNode does not belong at beginning, loop until correct spot then insert
     else
     {
-        Node *current, *previous;
+        Node *current, *previous, *currString;
         current = head;
         previous = NULL;
-
+        current->data.getTitle(currString);
         // this loop sets current so that newNode can be inserted before it
         for (current; current; current = current->next)
         {
-            if (strcmp(newNode->data.getTitle(cmpr1), current->data.getTitle(cmpr2)) < 0)
+            if (strcmp(nnString, currString) < 0)
             {
                 previous = current;
                 current = current->next;
@@ -145,9 +152,11 @@ void SongList::addNode(Node *newNode)
         previous->next = newNode;
         delete current;
         delete previous;
+        delete currString;
     }
-    delete cmpr1;
-    delete cmpr2;
+    delete headString;
+    delete tailString;
+    delete nnString;
 }
 
 // function to display all currently loaded song data
