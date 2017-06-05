@@ -117,8 +117,6 @@ void SongList::addNode(Node *newNode)
         tail = newNode;
         newNode->next = NULL;
         newNode->prev = NULL;
-        headStringActive = true;
-        tailStringActive = true;
     }
 
     // if head does exist AND newNode's title < head's title, insert at beginning
