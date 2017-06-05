@@ -161,6 +161,7 @@ void SongList::addNode(Node *newNode)
         newNode->prev = previous;
         current->prev = newNode;
         previous->next = newNode;
+        temp = NULL;
         delete temp;
         delete current;
         delete previous;
