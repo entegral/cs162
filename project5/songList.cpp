@@ -140,15 +140,15 @@ void SongList::addNode(Node *newNode)
     // Lastly, if newNode does not belong at beginning, loop until correct spot then insert
     else
     {
-        Node *current, *previous;
-        current = head;
+        Node *temp, *current, *previous;
+        temp = head;
         previous = NULL;
         // this loop sets current so that newNode can be inserted before it
-        for (current; current; current = current->next)
+        for (temp; temp; temp = temp->next)
         {
             char *currString = new char[current->data.getTitleLen() + 1];
-            current->data.getTitle(currString);
-            if (current && strcmp(nnString, currString) < 0)
+            temp->data.getTitle(currString);
+            if (strcmp(nnString, currString) > 0)
             {
                 previous = current;
                 current = current->next;
@@ -161,6 +161,7 @@ void SongList::addNode(Node *newNode)
         newNode->prev = current->prev;
         current->prev = newNode;
         previous->next = newNode;
+        delete temp;
         delete current;
         delete previous;
     }
