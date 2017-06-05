@@ -65,7 +65,7 @@ SongList::SongList(char fileName[])
         // now add newNode to the existing (or not existing) linked List of songs at correct spot
         addNode(newNode);
         size++;
-        delete newNode;
+        newNode = NULL;
 	}
 	inFile.close();
 }
@@ -94,7 +94,7 @@ SongList::~SongList()
 
 void SongList::addNode(Node *newNode)
 {
-    char *nnString, *headString, *tailString, *temp;
+    char *nnString, *headString, *tailString;
     bool headStringActive = false;
     bool tailStringActive = false;
     nnString = new char [newNode->data.getTitleLen() + 1];
