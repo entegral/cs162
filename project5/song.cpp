@@ -113,6 +113,11 @@ void Song::getTitle(char *temp)
 	}
 }
 
+int Song::getTitleLen()
+{
+	return strlen(title);
+}
+
 void Song::getArtist(char *temp)
 {
 	for (int i = 0; i <= strlen(temp); i++){

@@ -94,19 +94,19 @@ SongList::~SongList()
 
 void SongList::addNode(Node *newNode)
 {
-    char *nnString, *headString, *tailString;
+    char *nnString, *headString, *tailString, *temp;
     bool headStringActive = false;
     bool tailStringActive = false;
-    nnString = new char [strlen(newNode->data) + 1];
+    nnString = new char [newNode->data.getTitleLen() + 1];
     newNode->data.getTitle(nnString);
 
     if (head){
-        headString = new char [strlen(head->data) + 1];
+        headString = new char [head->data.getTitleLen() + 1];
         head->data.getTitle(headString);
         headStringActive = true;
     }
     if (tail){
-        tailString = new char [strlen(tail->data) + 1];
+        tailString = new char [tail->data.getTitleLen() + 1];
         tail->data.getTitle(tailString);
         tailStringActive = true;
     }
