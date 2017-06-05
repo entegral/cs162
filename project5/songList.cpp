@@ -103,10 +103,12 @@ void SongList::addNode(Node *newNode)
     if (head){
         headString = new char [head->data.getTitleLen() + 1];
         head->data.getTitle(headString);
+        headStringActive = true;
     }
     if (tail){
         tailString = new char [tail->data.getTitleLen() + 1];
         tail->data.getTitle(tailString);
+        tailStringActive = true;
     }
     // if head doesnt exist, assume list is not started and set newNode as single node in list
     if (!head)
@@ -115,6 +117,8 @@ void SongList::addNode(Node *newNode)
         tail = newNode;
         newNode->next = NULL;
         newNode->prev = NULL;
+        headStringActive = true;
+        tailStringActive = true;
     }
 
     // if head does exist AND newNode's title < head's title, insert at beginning
@@ -162,10 +166,10 @@ void SongList::addNode(Node *newNode)
         delete current;
         delete previous;
     }
-    if (head){
+    if (headStringActive){
         delete [] headString;
     }
-    if (tail){
+    if (tailStringActive){
         delete [] tailString;
     }
     delete [] nnString;
