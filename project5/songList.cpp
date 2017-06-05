@@ -150,8 +150,8 @@ void SongList::addNode(Node *newNode)
             temp->data.getTitle(currString);
             if (strcmp(nnString, currString) < 0)
             {
-                previous = temp;
-                current = temp->next;
+                previous = temp->prev;
+                current = temp;
             }
             delete [] currString;
         }
