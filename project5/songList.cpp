@@ -141,18 +141,19 @@ void SongList::addNode(Node *newNode)
     else
     {
         Node *current, *previous;
-        char *currString = new char[40];
         current = head;
         previous = NULL;
         // this loop sets current so that newNode can be inserted before it
         for (current; current; current = current->next)
         {
+            char *currString = new char[current->data.getTitleLen() + 1];
             current->data.getTitle(currString);
             if (strcmp(nnString, currString) < 0)
             {
                 previous = current;
                 current = current->next;
             }
+            delete [] currString;
         }
 
         //  current and previous are set, now insert at location
@@ -162,7 +163,6 @@ void SongList::addNode(Node *newNode)
         previous->next = newNode;
         delete current;
         delete previous;
-        delete [] currString;
     }
     if (headStringActive){
         delete [] headString;
