@@ -158,7 +158,7 @@ void SongList::addNode(Node *newNode)
 
         //  current and previous are set, now insert at location
         newNode->next = current;
-        newNode->prev = current->prev;
+        newNode->prev = previous;
         current->prev = newNode;
         previous->next = newNode;
         delete temp;
