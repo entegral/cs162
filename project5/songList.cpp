@@ -148,7 +148,7 @@ void SongList::addNode(Node *newNode)
         {
             char *currString = new char[temp->data.getTitleLen() + 1];
             temp->data.getTitle(currString);
-            if (strcmp(nnString, currString) > 0)
+            if (strcmp(nnString, currString) < 0)
             {
                 previous = temp;
                 current = temp->next;
