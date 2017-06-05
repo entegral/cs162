@@ -146,7 +146,7 @@ void SongList::addNode(Node *newNode)
         // this loop sets current so that newNode can be inserted before it
         for (temp; temp; temp = temp->next)
         {
-            char *currString = new char[current->data.getTitleLen() + 1];
+            char *currString = new char[temp->data.getTitleLen() + 1];
             temp->data.getTitle(currString);
             if (strcmp(nnString, currString) > 0)
             {
