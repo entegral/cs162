@@ -154,6 +154,7 @@ void SongList::addNode(Node *newNode)
                 break;
             }
             delete [] currString;
+            currString = NULL;
         }
 
         //  current and previous are set, now insert at location
@@ -162,14 +163,16 @@ void SongList::addNode(Node *newNode)
         current->prev = newNode;
         previous->next = newNode;
         temp = NULL;
-        current = NULL;                     // NEVER AGAIN FORGET TO SET A POINTER TO NULL BEFORE DELETING!
+        current = NULL;                     // NEVER AGAIN FORGET TO SET A POINTER TO NULL AFTER DELETING!
         previous = NULL;
     }
     if (headStringActive){
         delete [] headString;
+        headString = NULL;
     }
     if (tailStringActive){
         delete [] tailString;
+        tailString = NULL;
     }
     delete [] nnString;
     nnString = NULL;
