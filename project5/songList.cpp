@@ -172,6 +172,7 @@ void SongList::addNode(Node *newNode)
         delete [] tailString;
     }
     delete [] nnString;
+    nnString = NULL;
 }
 
 // function to display all currently loaded song data
