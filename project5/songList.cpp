@@ -141,10 +141,9 @@ void SongList::addNode(Node *newNode)
     else
     {
         Node *temp, *current, *previous;
-        temp = head;
         previous = NULL;
         // this loop sets current so that newNode can be inserted before it
-        for (temp; temp; temp = temp->next)
+        for (temp = head; temp; temp = temp->next)
         {
             char *currString = new char[temp->data.getTitleLen() + 1];
             temp->data.getTitle(currString);
