@@ -65,7 +65,7 @@ void Song::setTitle(char aTitle[])
 
 void Song::setArtist(char aArtist[])
 {
-	if(artist != NULL){
+	if(artist){
 		delete [] artist;
 		artist = NULL;
 	}
@@ -85,7 +85,7 @@ void Song::setDurationSec(int aDurationSec)
 
 void Song::setAlbum(char aAlbum[])
 {
-	if(album != NULL){
+	if(album){
 		delete [] album;
 		album = NULL;
 	}
