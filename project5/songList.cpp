@@ -162,7 +162,6 @@ void SongList::addNode(Node *newNode)
         newNode->prev = previous;
         current->prev = newNode;
         previous->next = newNode;
-        delete temp, current, previous;
         temp = NULL;
         current = NULL;                     // NEVER AGAIN FORGET TO SET A POINTER TO NULL AFTER DELETING!
         previous = NULL;

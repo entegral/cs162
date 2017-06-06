@@ -36,17 +36,17 @@ Song::~Song()
 	strcpy(aartist, "noArtist");
 	strcpy(aalbum, "noAlbum");
 
-	if(strstr(title, atitle) != 0){
+	if(title){
 		delete [] title;
 		title = NULL;
 	}
 
-	if(strstr(artist, aartist) != 0){
+	if(artist){
 		delete [] artist;
 		artist = NULL;
 	}
 
-	if(strstr(album, aalbum) != 0){
+	if(album){
 		delete [] album;
 		album = NULL;
 	}
@@ -62,7 +62,7 @@ void Song::printSongInfo()
 
 void Song::setTitle(char aTitle[])
 {
-	if(title != NULL){
+	if(title){
 		delete [] title;
 		title = NULL;
 	}
