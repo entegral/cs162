@@ -157,6 +157,11 @@ void SongList::addNode(Node *newNode)
             delete [] currString;
             currString = NULL;
         }
+        if (currString)
+        {
+            delete [] currString;
+            currString = NULL;
+        }
 
         //  current and previous are set, now insert at location
         newNode->next = current;
