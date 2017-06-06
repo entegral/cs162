@@ -151,6 +151,7 @@ void SongList::addNode(Node *newNode)
             {
                 previous = temp->prev;
                 current = temp;
+                break;
             }
             delete [] currString;
         }
@@ -185,7 +186,7 @@ void SongList::displayLibrary()
 	cout << "**************************" << endl;
     Node *current = head;
     int count = 0;
-    for(current; current; current->next)
+    for(current; current; current = current->next)
 	{
 		current->data.printSongInfo();
         cout << "Index: " << count++ << endl;
