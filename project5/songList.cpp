@@ -262,6 +262,9 @@ void SongList::addToLibrary()
 
     addNode(newNode);
 
+    delete checker;
+    checker = NULL;
+    
     delete [] aTitle;
     delete [] aArtist;
     delete [] aAlbum;
