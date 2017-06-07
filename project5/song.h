@@ -38,6 +38,7 @@ class Song
 		void getArtist(char *);
 		void getDuration();
 		void getAlbum(char *);
+		bool compareTitle(char *);
 		bool compareArtist(char []);
 		bool compareAlbum(char []);
 		int getTitleLen();

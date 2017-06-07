@@ -130,6 +130,18 @@ void Song::getAlbum(char *temp)
 	}
 }
 
+bool Song::compareTitle(char *searchQuery)
+{
+	if (strstr(title, searchQuery) != NULL)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
 bool Song::compareArtist(char searchQuery[])
 {
 	if (strstr(artist, searchQuery) != NULL)

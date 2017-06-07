@@ -245,6 +245,21 @@ void SongList::addToLibrary()
     newNode->data.setDurationSec(tempDurationSec);
     newNode->data.setAlbum(aAlbum);
 
+    // check if song is already in library
+    Node *checker;
+
+    for (checker = head; checker; checker = checker->next)
+    {
+        if (checker->data.compareTitle(aTitle))
+        {
+            cout << "You already have this song in your Library!" << endl;
+            delete newNode;
+            newNode = NULL;
+            checker = NULL;
+            return;
+        }
+    }
+
     addNode(newNode);
 
 
