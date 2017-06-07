@@ -25,10 +25,10 @@ int main()
 			case 'd':										// DONE - song.cpp
 				songs.displayLibrary();				//
 				break;										//
-/*			case 'a':
+			case 'a':
 				songs.addToLibrary();					// DONE - song.cpp
 				 break;										//
-			case 'r':
+/*			case 'r':
 				songs.displayLibrary();
 				songs.removeFromLibrary();				// DONE - song.cpp
 				break;

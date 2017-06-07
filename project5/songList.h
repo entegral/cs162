@@ -25,7 +25,7 @@ class SongList
 		void addNode(Node *);
         void addToLibrary();
 		void displayLibrary();
-//		void displayLibrary(Song [], int);
+		void displayLibrary(Node *);
 //		void removeFromLibrary();
 //		void searchForSongs();
 //		// void searchForSongs();

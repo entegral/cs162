@@ -7,9 +7,8 @@
 SongList::SongList()
 {
     size = 0;
-	Node *newNode = new Node;
-    newNode->next = NULL;
-    newNode->prev = NULL;
+    head = NULL;
+    tail = NULL;
 }
 
 // constructor - read from file
@@ -191,9 +190,9 @@ void SongList::displayLibrary()
 	cout << "**************************" << endl;
 	cout << "****Collection Results****" << endl;
 	cout << "**************************" << endl;
-    Node *current = head;
+    Node *current;
     int count = 0;
-    for(current; current; current = current->next)
+    for(current = head; current; current = current->next)
 	{
 		current->data.printSongInfo();
         cout << "Index: " << count++ << endl;
@@ -203,61 +202,64 @@ void SongList::displayLibrary()
 	return;
 }
 
-// overloaded display SongList function
-// void SongList::displayLibrary(Node )
-// {
-// 	cout << "**************************" << endl;
-// 	cout << "****Collection Results****" << endl;
-// 	cout << "**************************" << endl;
-//     Node *current = head;
-//     int count = 0
-//     for(current; current; current->next)
-// 	{
-// 		current->data.printSongInfo();
-//         cout << "Index: " << count++ << endl;
-// 	}
-// 	cout << "*************************" << endl;
-//     delete current;
-// 	return;
-// }
+//overloaded display SongList function
+void SongList::displayLibrary(Node *result)
+{
+	cout << "**************************" << endl;
+	cout << "****Collection Results****" << endl;
+	cout << "**************************" << endl;
+    Node *current;
+    int count = 0;
+    for(current = result; current; current = current->next)
+	{
+		current->data.printSongInfo();
+        cout << "Index: " << count++ << endl;
+	}
+	cout << "*************************" << endl;
+    delete current;
+	return;
+}
 
 
 // function to add new song objects to the song array
 // UPDATED FOR CLASSES
-// void SongList::addToLibrary()
-// {
-//     char tempTitle[MAXCHAR], tempArtist[MAXCHAR], tempDurationMin, tempDurationSec, tempAlbum[MAXCHAR];
-//     char *aTitle, *aArtist, *aAlbum;
-//
-//     Node *newNode = new Node;
-// 	cout << "What is the title of the song you would like to add? " << endl;
-// 	charArrayInput(tempTitle);
-//     aTitle = new char[strlen(tempTitle) + 1];
-//     strcpy(aTitle, tempTitle);
-// 	cout << "Who made this song? " << endl;
-// 	charArrayInput(tempArtist);
-//     aArtist = new char[strlen(tempArtist) + 1];
-//     strcpy(aArtist, tempArtist);
-// 	cout << "How many minuets is this song? (don't include seconds yet!) " << endl;
-// 	tempDurationMin = intInput();
-// 	cout << "How many seconds remain? " << endl;
-// 	tempDurationSec = intInput();
-// 	cout << "What is the name of the album? " << endl;
-// 	charArrayInput(tempAlbum);
-//     aAlbum = new char[strlen(tempAlbum) + 1];
-//     strcpy(aAlbum, tempAlbum);
-// 	newNode.setTitle(aTitle);
-//     newNode.setArtist(aArtist);
-//     newNode.setDurationMin(tempDurationMin);
-//     newNode.setDurationSec(tempDurationSec);
-//     newNode.setAlbum(aAlbum);
-//
-//     addNode(newNode);
-//
-//     cout << newNode.getTitle();
-//    	cout << " has been added to the library!" << endl;
-// 	return;
-// }
+void SongList::addToLibrary()
+{
+    char tempTitle[MAXCHAR], tempArtist[MAXCHAR], tempDurationMin, tempDurationSec, tempAlbum[MAXCHAR];
+    char *aTitle, *aArtist, *aAlbum;
+
+    Node *newNode = new Node;
+	cout << "What is the title of the song you would like to add? " << endl;
+	charArrayInput(tempTitle);
+    aTitle = new char[strlen(tempTitle) + 1];
+    strcpy(aTitle, tempTitle);
+	cout << "Who made this song? " << endl;
+	charArrayInput(tempArtist);
+    aArtist = new char[strlen(tempArtist) + 1];
+    strcpy(aArtist, tempArtist);
+	cout << "How many minuets is this song? (don't include seconds yet!) " << endl;
+	tempDurationMin = intInput();
+	cout << "How many seconds remain? " << endl;
+	tempDurationSec = intInput();
+	cout << "What is the name of the album? " << endl;
+	charArrayInput(tempAlbum);
+    aAlbum = new char[strlen(tempAlbum) + 1];
+    strcpy(aAlbum, tempAlbum);
+	newNode->data.setTitle(aTitle);
+    newNode->data.setArtist(aArtist);
+    newNode->data.setDurationMin(tempDurationMin);
+    newNode->data.setDurationSec(tempDurationSec);
+    newNode->data.setAlbum(aAlbum);
+
+    addNode(newNode);
+
+
+    cout << aTitle << " has been added to the library!" << endl;
+    size++;
+    newNode = NULL;
+
+	return;
+}
 //
 // // function to remove a song from a song array
 // void SongList::removeFromLibrary()
