@@ -35,11 +35,11 @@ int main()
 			case 's':
 			 	songs.searchForSongs();				// DONE - song.cpp
 			 	break;										//
-/*			case 'q':
+			case 'q':
 				songs.writeData(fileName);				// DONE - database.cpp
 				loopControl = quitProgram();				// DONE - main.cpp
 				break;
-		*/	default:
+			default:
 				cout << "Invalid selection!" << endl;		//	menu input error handling
 				break;
 		}

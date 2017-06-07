@@ -63,7 +63,6 @@ SongList::SongList(char fileName[])
 
         // now add newNode to the existing (or not existing) linked List of songs at correct spot
         addNode(newNode);
-        size++;
         newNode = NULL;
 	}
 	inFile.close();
@@ -181,6 +180,7 @@ void SongList::addNode(Node *newNode)
     }
     delete [] nnString;
     nnString = NULL;
+    this->size++;
 }
 
 // function to display all currently loaded song data
@@ -251,7 +251,6 @@ void SongList::addToLibrary()
 
 
     cout << aTitle << " has been added to the library!" << endl;
-    size++;
     newNode = NULL;
 
 	return;
@@ -275,7 +274,7 @@ void SongList::removeFromLibrary()
         head = ahead;
     }
     // if value = size - 1, then remove tail
-    else if (val == size - 1)
+    else if (val == this->size - 1)
     {
         toRemove = tail;
         prior = tail->prev;
@@ -297,6 +296,7 @@ void SongList::removeFromLibrary()
         toRemove->prev = NULL;
     }
 
+    this->size--;
     toRemove->data.printSongInfo();
     cout << " was removed from the library!" << endl;
 
@@ -352,21 +352,22 @@ void SongList::searchForSongs()										// Search songs:
  	return;
  }
 
-// // writes data to file
-// // incorporated overloaded '<<' to allow for direct output of song objects
-// void SongList::writeData(char fileName[])
-// {
-//     ofstream outFile;
-//     outFile.open(fileName);
-// 	if(!outFile)
-// 	{
-// 		cout << "outFile did not open, exiting program" << endl;
-// 		exit(0);
-// 	}
-//
-// 	for (int i = 0; i < size; i++){
-// 		list[i].writeSong(outFile);
-// 	}
-// 	outFile.close();
-// 	return;
-// }
+// writes data to file
+// incorporated overloaded '<<' to allow for direct output of song objects
+void SongList::writeData(char fileName[])
+{
+    Node *current;
+    ofstream outFile;
+    outFile.open(fileName);
+	if(!outFile)
+	{
+		cout << "outFile did not open, exiting program" << endl;
+		exit(0);
+	}
+
+	for (current = head; current; current = current->next){
+		current->data.writeSong(outFile);
+	}
+	outFile.close();
+	return;
+}

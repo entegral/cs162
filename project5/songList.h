@@ -28,8 +28,7 @@ class SongList
 		void displayLibrary(Song [], int);
 		void removeFromLibrary();
 		void searchForSongs();
-//	 	void searchForSongs();
-//		void writeData(char []);
+		void writeData(char []);
 };
 
 
