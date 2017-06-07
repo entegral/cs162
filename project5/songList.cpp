@@ -63,7 +63,6 @@ SongList::SongList(char fileName[])
 
         // now add newNode to the existing (or not existing) linked List of songs at correct spot
         addNode(newNode);
-        newNode = NULL;
 	}
 	inFile.close();
 }
@@ -264,7 +263,7 @@ void SongList::addToLibrary()
 
     delete checker;
     checker = NULL;
-    
+
     delete [] aTitle;
     delete [] aArtist;
     delete [] aAlbum;
