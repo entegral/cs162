@@ -131,7 +131,7 @@ void SongList::addNode(Node *newNode)
     {
         newNode->next = NULL;
         newNode->prev = tail;
-        tail->prev->next = newNode;
+        tail->next = newNode;
         tail = newNode;
     }
 
@@ -369,5 +369,7 @@ void SongList::writeData(char fileName[])
 		current->data.writeSong(outFile);
 	}
 	outFile.close();
+    delete current;
+    current = NULL;
 	return;
 }

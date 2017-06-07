@@ -37,7 +37,7 @@ int main()
 			 	break;										//
 			case 'q':
 				songs.writeData(fileName);				// DONE - database.cpp
-				loopControl = quitProgram();				// DONE - main.cpp
+				loopControl = false;				// DONE - main.cpp
 				break;
 			default:
 				cout << "Invalid selection!" << endl;		//	menu input error handling
