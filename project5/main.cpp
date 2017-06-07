@@ -32,10 +32,10 @@ int main()
 				songs.displayLibrary();
 				songs.removeFromLibrary();				// DONE - song.cpp
 				break;
-/*			case 's':
+			case 's':
 			 	songs.searchForSongs();				// DONE - song.cpp
 			 	break;										//
-			case 'q':
+/*			case 'q':
 				songs.writeData(fileName);				// DONE - database.cpp
 				loopControl = quitProgram();				// DONE - main.cpp
 				break;
