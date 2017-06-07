@@ -28,11 +28,11 @@ int main()
 			case 'a':
 				songs.addToLibrary();					// DONE - song.cpp
 				 break;										//
-/*			case 'r':
+			case 'r':
 				songs.displayLibrary();
 				songs.removeFromLibrary();				// DONE - song.cpp
 				break;
-			case 's':
+/*			case 's':
 			 	songs.searchForSongs();				// DONE - song.cpp
 			 	break;										//
 			case 'q':

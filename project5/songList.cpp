@@ -260,28 +260,58 @@ void SongList::addToLibrary()
 
 	return;
 }
-//
-// // function to remove a song from a song array
-// void SongList::removeFromLibrary()
-// {
-//     int val;
-// 	cout << "Enter the index of the song you would like to remove: " << endl;
-// 	val = intInput();
-//     Song toRemove = list[val];
-// 	int j = 0;
-//     if (val) {
-//             for (j = val; j < size; j++) {
-//                     list[j] = list[j + 1];
-//             }
-//             size--;
-//     }
-//     cout << toRemove.getTitle();
-// 	cout << " by ";
-//     cout << toRemove.getArtist();
-//     cout <<  " was removed from the library!" << endl;
-// 	return;
-// }
-//
+
+// function to remove a song from a song array
+void SongList::removeFromLibrary()
+{
+    Node *toRemove, *ahead, *prior;
+    toRemove = head;
+    ahead = NULL, prior = NULL;
+    int val, i;
+	cout << "Enter the index of the song you would like to remove: " << endl;
+	val = intInput();
+
+    // if value is zero, then remove head
+    if (val == 0)
+    {
+        ahead = head->next;
+        ahead->prev = NULL;
+        head = ahead;
+    }
+    // if value = size - 1, then remove tail
+    else if (val == size - 1)
+    {
+        toRemove = tail;
+        prior = tail->prev;
+        prior->next = NULL;
+        tail = prior;
+    }
+    // any other value given, iterate through list and remove respective node
+    else
+    {
+        for (i = 0; i < val; i++)
+        {
+            toRemove = toRemove->next;
+            ahead = toRemove->next;
+            prior = toRemove->prev;
+        }
+        prior->next = toRemove->next;
+        ahead->prev = toRemove->prev;
+        toRemove->next = NULL;
+        toRemove->prev = NULL;
+    }
+
+    toRemove->data.printSongInfo();
+    cout << " was removed from the library!" << endl;
+
+    delete toRemove;
+    toRemove = NULL;
+    ahead = NULL;
+    prior = NULL;
+
+	return;
+}
+
 // // function to search for songs that might exist within the array
 // void SongList::searchForSongs()										// Search songs:
 //  {
