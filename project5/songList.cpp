@@ -15,7 +15,7 @@ SongList::SongList()
 SongList::SongList(char fileName[])
 {
    	char tempTitle[MAXCHAR], tempArtist[MAXCHAR], tempAlbum[MAXCHAR], tempLineCount[MAXCHAR];
-   	int tempMin, tempSec, lineCount;
+   	int tempMin, tempSec, lineCount, counter;
     ifstream inFile;
 	size = 0;
     head = NULL;
@@ -42,7 +42,7 @@ SongList::SongList(char fileName[])
 
     // file opened, now load data from file to object
 	inFile.getline(tempTitle, MAXCHAR, ';');
-	while(!inFile.eof())
+	for (counter = 1; counter < lineCount; counter++)
 	{
         // acquire song info in tmep variables
         inFile.getline(tempArtist, MAXCHAR, ';');
