@@ -85,6 +85,7 @@ SongList::~SongList()
         delete head;
         delete tail;
         current = NULL;
+        spare = NULL;
         head = NULL;
         tail = NULL;
 	}
