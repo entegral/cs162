@@ -75,6 +75,7 @@ SongList::~SongList()
 		Node *current = head;
         while (current)
         {
+            delete current->data; 
             current->prev = NULL;
             current->next = NULL;
             current = current->next;
