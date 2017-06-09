@@ -73,12 +73,14 @@ SongList::~SongList()
     // need to iterate through linked list and set each pointer to NULL, then delete each Node
 	if (head){
 		Node *current = head;
+        Node *spare;
         while (current)
         {
-            delete current->data; 
-            current->prev = NULL;
-            current->next = NULL;
+            spare = current;
             current = current->next;
+            delete current;
+            spare->prev = NULL;
+            spare->next = NULL;
         }
         delete head;
         delete tail;
