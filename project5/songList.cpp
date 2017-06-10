@@ -258,7 +258,6 @@ void SongList::addToLibrary()
             cout << "You already have this song in your Library!" << endl;
             delete newNode;
             newNode = NULL;
-            checker = NULL;
             return;
         }
     }
