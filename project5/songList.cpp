@@ -263,14 +263,14 @@ void SongList::addToLibrary()
 
     addNode(newNode);
 
-    delete checker;
-    checker = NULL;
 
+    cout << aTitle << " has been added to the library!" << endl;
+
+    delete checker;
     delete [] aTitle;
     delete [] aArtist;
     delete [] aAlbum;
-
-    cout << aTitle << " has been added to the library!" << endl;
+    checker = NULL;
     newNode = NULL;
 
 	return;
