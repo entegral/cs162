@@ -375,22 +375,42 @@ void SongList::searchForSongs()										// Search songs:
 
 // writes data to file
 // incorporated overloaded '<<' to allow for direct output of song objects
+// void SongList::writeData(char fileName[])
+// {
+//     Node *current;
+//     ofstream outFile;
+//     outFile.open(fileName);
+// 	if(!outFile)
+// 	{
+// 		cout << "outFile did not open, exiting program" << endl;
+// 		exit(0);
+// 	}
+
+// 	for (current = head; current; current = current->next){
+// 		current->data.writeSong(outFile);
+// 	}
+// 	outFile.close();
+//     delete current;
+//     current = NULL;
+// 	return;
+// }
+
 void SongList::writeData(char fileName[])
 {
     Node *current;
     ofstream outFile;
     outFile.open(fileName);
-	if(!outFile)
-	{
-		cout << "outFile did not open, exiting program" << endl;
-		exit(0);
-	}
+    if(!outFile)
+    {
+        cout << "outFile did not open, exiting program" << endl;
+        exit(0);
+    }
 
-	for (current = head; current; current = current->next){
-		current->data.writeSong(outFile);
-	}
-	outFile.close();
-    delete current;
+    for (current = head; current; current = current->next){
+        outFile << current->data;
+    }
+    outFile.close();
     current = NULL;
-	return;
+    return;
 }
+
