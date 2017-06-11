@@ -77,7 +77,10 @@ SongList::~SongList()
         while (current)
         {
             spare = current;
-            current = current->next;
+            if (current->next)
+            {
+               current = current->next;
+            }
             delete current;
             spare->prev = NULL;
             spare->next = NULL;
