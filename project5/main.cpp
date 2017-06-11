@@ -19,27 +19,27 @@ int main()
 	while(loopControl)
 	{
 		printMenu();
-		menuSelection = charInput();					// DONE - song.cpp
-		switch (menuSelection)
+		menuSelection = charInput();				
+		switch (menuSelection)						
 		{
-			case 'd':									// DONE - song.cpp
-				songs.displayLibrary();						//
-				break;										//
+			case 'd':								
+				songs.displayLibrary();				
+				break;								
 			case 'a':
-				songs.addToLibrary();					// DONE - song.cpp
-				 break;										//
+				songs.addToLibrary();				
+				 break;								
 			case 'r':
 				songs.displayLibrary();
-				songs.removeFromLibrary();				// DONE - song.cpp
-				break;
+				songs.removeFromLibrary();			
+				break;								
 			case 's':
-			 	songs.searchForSongs();					// DONE - song.cpp
-			 	break;										//
+			 	songs.searchForSongs();					
+			 	break;									
 			case 'q':
-				songs.writeData(fileName);				// DONE - database.cpp
-				return 0;								// DONE - main.cpp
+				songs.writeData(fileName);				
+				return 0;								
 			default:
-				cout << "Invalid selection!" << endl;		//	menu input error handling
+				cout << "Invalid selection!" << endl;	
 				break;
 		}
 	}
