@@ -409,8 +409,9 @@ void SongList::writeData(char fileName[])
     for (current = head; current; current = current->next){
         outFile << current->data;
     }
-    outFile.close();
+    delete current;
     current = NULL;
+    outFile.close();
     return;
 }
 
