@@ -1,2 +1,2 @@
 all:
-	g++ supplied.o list.cpp -o pFinal
+	g++ supplied.o main.cpp list.cpp -o pFinal
