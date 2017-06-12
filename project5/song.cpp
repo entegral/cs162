@@ -93,12 +93,6 @@ void Song::setAlbum(char aAlbum[])
 	strcpy(album, aAlbum);
 }
 
-//prints formatted song for writing to file
-void Song::writeSong(ofstream &outFile)
-{
-	outFile << title << ';' << artist << ';' << durationMin << ';' << durationSec << ';' << album << endl;
-}
-
 void Song::getTitle(char *temp)
 {
 	for (int i = 0; i <= strlen(title); i++){
