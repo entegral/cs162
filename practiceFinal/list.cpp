@@ -90,7 +90,7 @@ void removeByIndex(node * &head, int position)
 			current = current->next;
 			i++;
 		}
-		toRemove = current;
+		toRemove = prior->next;
 
 		// check if toRemove is tail
 		if (toRemove->next = NULL)
