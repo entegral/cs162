@@ -11,12 +11,17 @@ int main()
     int position = 8;
     int newInt = 100000000;
 
+    // sum list
     int sum = sumOfList(head);
     cout << "Sum: " << sum << endl;
 
+    // insert into list
     cout << "List after insertion:" << endl;
     insert(head, position, newInt);
+    display(head);
 
+    // remove from list
+    remove(head, position);
     display(head);
     destroy(head);
     

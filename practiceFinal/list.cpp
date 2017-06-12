@@ -45,4 +45,53 @@ void insert(node* &head, int position, int newInt)
 	}	
 }
 
+void remove(node * &head, int position)
+{
+	// removal from three positions: at head, middle, or at tail
+	
+	// remove at head
+	if (position == 0)
+	{
+		node *spare = head;
+		head = head->next;
+		delete spare;
+		spare = NULL;
+	}
+	// remove at any other loation
+	
+	else 
+	{
+		node *current = head;
+		node *toRemove = NULL;
+		node *prior = NULL;
+		int i = 0;
+		while(i < position)
+		{
+			prior = current;
+			current = current->next;
+			i++;
+		}
+		toRemove = prior->next;
+		// check if toRemove is tail
+		if (toRemove->next)
+		{
+			prior->next = toRemove->next;
+			delete toRemove;
+			toRemove = NULL;
+		}
+		else 
+		{
+			prior->next = NULL;
+			delete toRemove;
+			toRemove = NULL;
+		}
+	}
+}
+
+
+
+
+
+
+
 
