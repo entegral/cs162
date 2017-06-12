@@ -84,10 +84,9 @@ void removeByIndex(node * &head, int position)
 		
 		// point a pointer to the node to be removed
 		int i = 0;
-		while(i < position)
+		for (int i = 0; i < position; current = current->next)
 		{
 			prior = current;
-			current = current->next;
 			i++;
 		}
 		toRemove = prior->next;
