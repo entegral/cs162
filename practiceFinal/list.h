@@ -22,5 +22,6 @@ void duplicate(node * & new_copy); //provides a duplicate copy of the list
 /* *****************YOUR TURN! ******************************** */
 //Write your function prototype here:
 //
-
+int sumOfList(node *head);
+void insert(node * &head, int position, int newInt);
 #endif
