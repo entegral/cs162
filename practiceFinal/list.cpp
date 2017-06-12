@@ -48,24 +48,9 @@ void insert(node* &head, int position, int newInt)
 
 void removeByIndex(node * &head, int position)
 {
+{
 	// removal from three positions: at head, middle, or at tail
-
-	// count items in list
-	int listSize = 0;
-	node *counter = head;
-	while (counter)
-	{
-		listSize++;
-		counter = counter->next;
-	}
-	counter = NULL;
-	// warn if index to remove is larger than list
-	if (listSize < position + 1)
-	{
-		cout << "Index provided is larger than list. Try running again!" << endl;
-		return;
-	}
-
+	
 	// remove at head
 	if (position == 0)
 	{
@@ -74,33 +59,31 @@ void removeByIndex(node * &head, int position)
 		delete spare;
 		spare = NULL;
 	}
-
-	// remove at any other loation	
+	// remove at any other loation
+	
 	else 
 	{
 		node *current = head;
 		node *toRemove = NULL;
 		node *prior = NULL;
-		
-		// point a pointer to the node to be removed
-		int i = 1;
-		for (int i = 0; i < position; current = current->next)
+		int i = 0;
+		while(i < position)
 		{
 			prior = current;
+			current = current->next;
 			i++;
 		}
 		toRemove = prior->next;
-
 		// check if toRemove is tail
-		if (toRemove->next = NULL)
+		if (toRemove->next)
 		{
-			prior->next = NULL;
+			prior->next = toRemove->next;
 			delete toRemove;
 			toRemove = NULL;
 		}
-		else
+		else 
 		{
-			prior->next = toRemove->next;
+			prior->next = NULL;
 			delete toRemove;
 			toRemove = NULL;
 		}
