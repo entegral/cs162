@@ -8,7 +8,7 @@ int main()
     display(head);
 
     //PLEASE PUT YOUR CODE HERE to call the function assigned
-    int position = 16;
+    int position = 2;
     int newInt = 100000000;
 
     // sum list
