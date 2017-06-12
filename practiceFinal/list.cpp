@@ -48,7 +48,6 @@ void insert(node* &head, int position, int newInt)
 
 void removeByIndex(node * &head, int position)
 {
-{
 	// removal from three positions: at head, middle, or at tail
 	
 	// remove at head
