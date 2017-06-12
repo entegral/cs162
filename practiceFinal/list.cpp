@@ -83,7 +83,7 @@ void removeByIndex(node * &head, int position)
 		node *prior = NULL;
 		
 		// point a pointer to the node to be removed
-		int i = 0;
+		int i = 1;
 		for (int i = 0; i < position; current = current->next)
 		{
 			prior = current;
