@@ -21,7 +21,7 @@ int main()
     display(head);
 
     // remove from list
-    remove(head, position);
+    removeByIndex(head, position);
     display(head);
     destroy(head);
     

@@ -1,4 +1,5 @@
 #include "list.h"
+using namespace std;
 
 //put the implementation of your assigned functions here
 int sumOfList(node * head)
@@ -45,21 +46,23 @@ void insert(node* &head, int position, int newInt)
 	}	
 }
 
-void remove(node * &head, int position)
+void removeByIndex(node * &head, int position)
 {
 	// removal from three positions: at head, middle, or at tail
 
 	// count items in list
-	int count = 0;
+	int listSize = 0;
 	node *counter = head;
 	while (counter)
 	{
-		count++;
+		listSize++;
 		counter = counter->next;
 	}
-	if (count - 1 > position)
+	counter = NULL;
+	// warn if index to remove is larger than list
+	if (listSize < position + 1)
 	{
-		std::cout << "Index position is larger than list. Try running again!" << std::endl;
+		cout << "Index provided is larger than list. Try running again!" << endl;
 		return;
 	}
 
@@ -78,22 +81,30 @@ void remove(node * &head, int position)
 		node *current = head;
 		node *toRemove = NULL;
 		node *prior = NULL;
+		
+		// point a pointer to the node to be removed
 		int i = 0;
 		while(i < position)
 		{
 			prior = current;
-			if (current->next)
-			{
-				current = current->next;
-			}
+			current = current->next;
 			i++;
 		}
-		toRemove = prior->next;
+		toRemove = current;
+
 		// check if toRemove is tail
-		prior->next = toRemove->next;
-		delete toRemove;
-		toRemove = NULL;
-		
+		if (toRemove->next = NULL)
+		{
+			prior->next = NULL;
+			delete toRemove;
+			toRemove = NULL;
+		}
+		else
+		{
+			prior->next = toRemove->next;
+			delete toRemove;
+			toRemove = NULL;
+		}
 	}
 }
 

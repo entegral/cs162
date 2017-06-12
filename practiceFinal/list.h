@@ -24,5 +24,5 @@ void duplicate(node * & new_copy); //provides a duplicate copy of the list
 //
 int sumOfList(node *head);
 void insert(node * &head, int position, int newInt);
-void remove(node * &head, int position);
+void removeByIndex(node * &head, int position);
 #endif
