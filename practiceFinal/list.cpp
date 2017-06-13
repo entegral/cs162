@@ -63,7 +63,6 @@ void removeByIndex(node * &head, int position)
 	else 
 	{
 		node *current = head;
-		node *toRemove = NULL;
 		node *prior = NULL;
 		int i = 0;
 		while(i < position)
@@ -71,25 +70,24 @@ void removeByIndex(node * &head, int position)
 			prior = current;
 			current = current->next;
 			i++;
-			if (!current)
+			if (!current->next)
 			{
 				break;
 			}
 		}
-		toRemove = prior->next;
 
 		// check if toRemove is tail
-		if (!current)
+		if (!current->next)
 		{
 			prior->next = NULL;
-			delete prior;
-			toRemove = NULL;
+			delete current;
+			current = NULL;
 		}
 		else 
 		{
-			prior->next = toRemove->next;
-			delete toRemove;
-			toRemove = NULL;
+			prior->next = current->next;
+			delete current;
+			current = NULL;
 		}
 	}
 }
