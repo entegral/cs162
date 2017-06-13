@@ -71,19 +71,23 @@ void removeByIndex(node * &head, int position)
 			prior = current;
 			current = current->next;
 			i++;
+			if (!current)
+			{
+				break;
+			}
 		}
 		toRemove = prior->next;
 
 		// check if toRemove is tail
-		if (toRemove->next)
+		if (!current)
 		{
-			prior->next = toRemove->next;
+			prior->next = NULL;
 			delete toRemove;
 			toRemove = NULL;
 		}
 		else 
 		{
-			prior->next = NULL;
+			prior->next = toRemove->next;
 			delete toRemove;
 			toRemove = NULL;
 		}
