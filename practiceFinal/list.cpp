@@ -82,7 +82,7 @@ void removeByIndex(node * &head, int position)
 		if (!current)
 		{
 			prior->next = NULL;
-			delete toRemove;
+			delete prior;
 			toRemove = NULL;
 		}
 		else 
