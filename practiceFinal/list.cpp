@@ -65,7 +65,7 @@ void removeByIndex(node * &head, int position)
 		node *current = head;
 		node *toRemove = NULL;
 		node *prior = NULL;
-		int i = 1;
+		int i = 0;
 		while(i < position)
 		{
 			prior = current;
