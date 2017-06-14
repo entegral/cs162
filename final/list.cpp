@@ -5,40 +5,40 @@ using namespace std;
 
 void removeEven(node * &head)
 {
-	node * current, * next, *destroy;
-
-	for (current = head; current; current = current->next)
-	{
+	while (current)
+        {
+		prior = current;
+		current = current->next;
 		next = current->next;
 
-		//check to see if current pointer is head and even, if so remove and reassign head	
-		if (current = head)
+		// if at head
+    		if (head->data % 2 == 0)
+    		{
+    		   	node *spare = head;
+   				head = head->next;
+   			        delete spare;
+   			        spare = NULL;
+		}
+
+		// if current is tail
+		else if (current->data % 2 == 0 && !current->next)
 		{
-			if (current->data % 2 == 0)
-			{
-				head = head->next;
-				destroy = current;
-				delete destroy;
-				destroy = NULL;
+			prior->next = NULL;
+			delete next;
+			continue;
 			}
-		}
-		else if (current->data % 2 == 0)
+		// if current is not tail
+		else if (current->data % 2 ==0)
 		{
-				head = head->next;
-				destroy = current;
-				delete destroy;
-				destroy = NULL;
+			prior->next = current->next;
+			delete next;
+			continue;
 		}
-		
-		// check to see if next pointer is even, if so remove it and assign pointers
-		else if (next->data % 2 == 0)
+		else
 		{
-			current->next = next->next;
-			destroy = next;
-			delete destroy;
-			destroy = NULL;
+			continue;
 		}
-	}
+        }    
 }
 	
 
