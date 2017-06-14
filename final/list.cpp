@@ -31,7 +31,7 @@ void removeEven(node * &head)
 					delete current;
 					current = prior->next;
 					// if a second even is right after, delete it too
-					if (current % 2 == 0)
+					if (current->data % 2 == 0)
 					{
 						prior->next = current->next;
 						delete current;
