@@ -25,7 +25,7 @@ void removeEven(node * &head)
 				}
 
 				// if current is not tail
-				else if (current->data % 2 == 0)
+				else if (prior->data % 2 == 0)
 				{
 					prior->next = current->next;
 					delete current;
@@ -34,7 +34,7 @@ void removeEven(node * &head)
 				}
 
 				// if current is tail
-				else if (current->data % 2 == 0 && !current->next)
+				else if (prior->data % 2 == 0 && !prior->next)
 				{
 					prior->next = NULL;
 					delete current;
