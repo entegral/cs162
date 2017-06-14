@@ -1,49 +1,64 @@
 #include "list.h"
+using namespace std;
 
 //put the implementation of your assigned functions here
 
 void removeEven(node * &head)
 {
-    // removal from three positions: at head, middle, or at tail
-    
-    // remove at head
-    if (position == 0)
-    {
-        node *spare = head;
-        head = head->next;
-        delete spare;
-        spare = NULL;
-    }
-    // remove at any other loation
-    
-    else 
-    {
-        node *current = head;
-        node *prior = NULL;
-        int i = 0;
-        while(i < position)
-        {
-            prior = current;
-            current = current->next;
-            i++;
-            if (!current->next)
-            {
-                break;
-            }
-        }
+	// removal from three positions: at head, middle, or at tail
+	node *current = head;
+	node * prior = NULL;
+	node * next = NULL;
 
-        // check if toRemove is tail
-        if (!current->next)
-        {
-            prior->next = NULL;
-            delete current;
-            current = NULL;
-        }
-        else 
-        {
-            prior->next = current->next;
-            delete current;
-            current = NULL;
-        }
-    }
+		while (current)
+	        {
+			prior = current;
+			current = current->next;
+			next = current->next;
+	
+			// if at head
+        		if (head->data % 2 == 0)
+        		{
+        		   	node *spare = head;
+       				head = head->next;
+       			        delete spare;
+       			        spare = NULL;
+			}
+
+			// if current is tail
+			else if (current->data % 2 == 0 && !current->next)
+			{
+				prior->next = NULL;
+				delete next;
+				continue;
+				}
+			// if current is not tail
+			else if (current->data % 2 ==0)
+			{
+				prior->next = current->next;
+				delete next;
+				continue;
+			}
+			else
+			{
+				continue;
+			}
+	        }    
+}
+
+int countEven(node * head)
+{
+	int count = 0;
+	node * current = head;
+	while (current)
+	{
+		if (current->data % 2 == 0)
+		{
+			count++;
+		}
+		current = current->next;
+	}
+	cout << "Number of evens: " << count << endl;
+	return count;
+
 }

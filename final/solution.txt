@@ -1,0 +1,72 @@
+
+void removeEven(node * &head)
+{
+        // removal from three positions: at head, middle, or at tail
+        node *current = head;
+        node * prior = NULL;
+        node * next = NULL;
+
+        // if at head
+        if (head->data % 2 == 0)
+        {
+                node *spare = head;
+                head = head->next;
+                delete spare;
+                spare = NULL;
+        }
+        else
+        {
+                while (current)
+                {
+                        prior = current;
+                        current = current->next;
+                        next = current->next;
+
+                        // if current is tail
+                        if (prior->data % 2 == 0 && !prior->next)
+                        {
+                                prior->next = NULL;
+                                delete next;
+                                continue;
+                                }
+                        // if current is not tail
+                        else if (prior->data % 2 ==0)
+                        {
+                                prior->next = current->next;
+                                delete next;
+                                continue;
+                        }
+
+                        else
+                        {
+                                continue;
+                        }
+                }
+        }
+}
+
+int countEven(node * head)
+{
+        int count = 0;
+        node * current = head;
+        while (current)
+        {
+                if (current->data % 2 == 0)
+                {
+                        count++;
+                }
+                current = current->next;
+        }
+        return count;
+
+}
+
+Here is the original list: 2 -> 57 -> 12 -> 6 -> 54 -> 47 -> 34 -> 3 -> 50 -> 71 -> 2 -> 17 -> 48 -> 50 -> 2
+
+This list contains 15 number of items 
+
+
+The resulting list is... 57 -> 12 -> 6 -> 54 -> 47 -> 34 -> 3 -> 50 -> 71 -> 2 -> 17 -> 48 -> 50 -> 2
+
+This list contains 14 number of items 
+The sum of all data is: 453
