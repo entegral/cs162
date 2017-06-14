@@ -24,6 +24,14 @@ void removeEven(node * &head)
 					spare = NULL;
 				}
 
+				// if current is tail
+				else if (!current->next && current->data)
+				{
+					prior->next = NULL;
+					delete current;
+					continue;
+				}
+
 				// if current is not tail
 				else if (current->data % 2 == 0)
 				{
@@ -40,13 +48,6 @@ void removeEven(node * &head)
 					continue;
 				}
 
-				// if current is tail
-				else if (current->data % 2 == 0 && !current->next)
-				{
-					prior->next = NULL;
-					delete current;
-					continue;
-				}
 				else
 				{
 					continue;
