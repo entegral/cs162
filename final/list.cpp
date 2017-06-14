@@ -5,51 +5,26 @@ using namespace std;
 
 void removeEven(node * &head)
 {
-	// removal from three positions: at head, middle, or at tail
-	node *current = head;
-	node * prior = NULL;
-	node * next = NULL;
+	for (current = head; current; current = current->next)
+	{
+		next = current->next;
 
-	while (current)
+		//check to see if current pointer is head and even, if so remove and reassign head	
+		if (current = head && current % 2 == 0)
 		{
-			prior = current;
-			current = current->next;
-	
-			// if at head
-			if (head->data % 2 == 0)
-			{
-				node *spare = head;
-				head = head->next;
-				delete spare;
-				spare = NULL;
-			}
-
-			// if current is not tail
-			else if (prior->data % 2 == 0)
-			{
-
-			}
-			else if (current->data % 2 == 0)
-			{
-				prior->next = current->next;
-				delete current;
-				continue;
-			}
-
-			// if current is tail
-			else if (current->data % 2 == 0 && !current->next)
-			{
-				prior->next = NULL;
-				delete current;
-				continue;
-			}
-			else
-			{
-				continue;
-			}
-		}    
+			head = head->next;
+			delete current;
+		}
+		
+		// check to see if next pointer is even, if so remove it and assign pointers
+		else if (next->data % 2 == 0)
+		{
+			current->next = next->next;
+			delete next;
+		}
+	}
 }
-
+	
 
 int countEven(node * head)
 {
