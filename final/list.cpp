@@ -5,6 +5,7 @@ using namespace std;
 
 void removeEven(node * &head)
 {
+	node * current, * prior, * next;
 	while (current)
         {
 		prior = current;
