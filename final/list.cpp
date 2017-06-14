@@ -41,7 +41,6 @@ void removeEven(node * &head)
 			{
 				prior->next = NULL;
 				delete current;
-				current = prior->next;
 				continue;
 			}
 			else
