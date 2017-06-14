@@ -5,7 +5,7 @@ using namespace std;
 
 void removeEven(node * &head)
 {
-	node * current, * next;
+	node * current, * next, *destroy;
 
 	for (current = head; current; current = current->next)
 	{
@@ -17,7 +17,9 @@ void removeEven(node * &head)
 			if (current->data % 2 == 0)
 			{
 				head = head->next;
-				delete current;
+				destroy = current;
+				delete destroy;
+				destroy = NULL;
 			}
 		}
 		
@@ -25,7 +27,9 @@ void removeEven(node * &head)
 		else if (next->data % 2 == 0)
 		{
 			current->next = next->next;
-			delete next;
+			destroy = next;
+			delete destroy;
+			destroy = NULL;
 		}
 	}
 }
