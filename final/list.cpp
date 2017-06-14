@@ -14,7 +14,6 @@ void removeEven(node * &head)
 			{
 				prior = current;
 				current = current->next;
-				next = current->next;
 		
 				// if at head
 				if (head->data % 2 == 0)
