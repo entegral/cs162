@@ -22,6 +22,13 @@ void removeEven(node * &head)
 				destroy = NULL;
 			}
 		}
+		else if (current->data % 2 == 0)
+		{
+				head = head->next;
+				destroy = current;
+				delete destroy;
+				destroy = NULL;
+		}
 		
 		// check to see if next pointer is even, if so remove it and assign pointers
 		else if (next->data % 2 == 0)
