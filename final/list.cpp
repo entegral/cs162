@@ -10,42 +10,45 @@ void removeEven(node * &head)
 	node * prior = NULL;
 	node * next = NULL;
 
-		while (current)
+	while (current)
+		{
+			prior = current;
+			current = current->next;
+	
+			// if at head
+			if (head->data % 2 == 0)
 			{
-				prior = current;
-				current = current->next;
-		
-				// if at head
-				if (head->data % 2 == 0)
-				{
-					node *spare = head;
-					head = head->next;
-					delete spare;
-					spare = NULL;
-				}
+				node *spare = head;
+				head = head->next;
+				delete spare;
+				spare = NULL;
+			}
 
-				// if current is not tail
-				else if (current->data % 2 == 0)
-				{
-					prior->next = current->next;
-					delete current;
-					current = prior->next;
-					continue;
-				}
+			// if current is not tail
+			else if (prior->data % 2 == 0)
+			{
 
-				// if current is tail
-				else if (current->data % 2 == 0 && !current->next)
-				{
-					prior->next = NULL;
-					delete current;
-					current = prior->next;
-					continue;
-				}
-				else
-				{
-					continue;
-				}
-			}    
+			}
+			else if (current->data % 2 == 0)
+			{
+				prior->next = current->next;
+				delete current;
+				continue;
+			}
+
+			// if current is tail
+			else if (current->data % 2 == 0 && !current->next)
+			{
+				prior->next = NULL;
+				delete current;
+				current = prior->next;
+				continue;
+			}
+			else
+			{
+				continue;
+			}
+		}    
 }
 
 
