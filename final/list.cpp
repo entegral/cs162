@@ -29,7 +29,14 @@ void removeEven(node * &head)
 				{
 					prior->next = current->next;
 					delete current;
-					current = prior;
+					current = prior->next;
+					// if a second even is right after, delete it too
+					if (current % 2 == 0)
+					{
+						prior->next = current->next;
+						delete current;
+						current = prior->next;
+					}
 					continue;
 				}
 
