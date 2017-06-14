@@ -12,7 +12,7 @@ void removeEven(node * &head)
 		next = current->next;
 
 		//check to see if current pointer is head and even, if so remove and reassign head	
-		if (current = head && current % 2 == 0)
+		if (current = head && current->data % 2 == 0)
 		{
 			head = head->next;
 			delete current;
