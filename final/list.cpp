@@ -8,7 +8,6 @@ void removeEven(node * &head)
 	// removal from three positions: at head, middle, or at tail
 	node *current = head;
 	node * prior = NULL;
-	node * next = NULL;
 
 		while (current)
 			{
@@ -29,7 +28,7 @@ void removeEven(node * &head)
 				{
 					prior->next = current->next;
 					delete current;
-					current = prior;
+					current = prior->next;
 					continue;
 				}
 
